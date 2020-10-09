@@ -1,0 +1,56 @@
+@import "./reset.css";
+@import "./responsive.css";
+
+/* common css */
+.inner {
+    width: 1300px;
+    margin: auto;
+}
+
+/* main.html */
+.container {
+}
+
+header {
+    position: fixed;
+    background-color: #000;
+    width: 100%;
+}
+header #logo-container {
+    padding: 10px 0;
+}
+header #logo-container img {
+}
+
+section {
+    padding-top: 20vh;
+    height: 75vh;
+}
+
+section .section-container {
+    display: flex;
+    flex-direction: column;
+}
+section .section-container .heading {
+}
+section .section-container .heading h1 {
+}
+section .section-container .heading h3 {
+}
+
+section .section-container .main-desc {
+}
+section .section-container .main-desc p {
+}
+
+section .section-container .join {
+}
+section .section-container .join a {
+}
+
+footer {
+}
+footer .footer-content {
+}
+footer .footer-content a {
+}
