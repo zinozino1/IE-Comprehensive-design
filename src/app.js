@@ -27,5 +27,7 @@ app.get("/login", function (req, res) {
 app.get("/join", function (req, res) {
     res.render("join");
 });
-
+app.get("/home", function (req, res) {
+    res.render("home");
+});
 export default app;

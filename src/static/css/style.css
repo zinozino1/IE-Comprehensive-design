@@ -5,7 +5,7 @@
 .inner {
     width: 1300px;
     margin: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .container {
@@ -24,52 +24,94 @@ header #logo-container {
     display: flex;
     align-items: center;
 }
-header #logo-container img {
-    margin: 0;
+header #logo-container a {
+    color: white;
+    font-size: 36px;
+    margin-left: 10px;
 }
 
 /* --header.pug */
 /* main.pug */
 
 section {
+    background: url("../images/main4.jpg") no-repeat center center;
+    background-size: cover;
+    color: white;
 }
 
 section .section-container {
     /* padding-top: 10vh; */
-    height: 95vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
 }
 section .section-container .heading {
+    padding-right: 20px;
     text-align: center;
     border: 1px solid blue;
+    width: 430px;
+    height: 160px;
 }
 section .section-container .heading h1 {
-    font-size: 80px;
-    padding: 50px;
+    padding-top: 50px;
+    line-height: 1.2em;
+    font-size: 50px;
+    color: white;
+    font-weight: 600;
+}
+
+section .section-container .heading h1 span {
+    color: #ffee55;
+    font-weight: 600;
 }
 section .section-container .heading h3 {
 }
 
 section .section-container .main-desc {
+    box-sizing: border-box;
     border: 1px solid blue;
+    text-align: center;
+    width: 500px;
+    padding-right: 120px;
 }
 section .section-container .main-desc p {
 }
 
 section .section-container .join {
     border: 1px solid blue;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-right: 120px;
+    width: 500px;
 }
+
 section .section-container .join .to-signup {
+    background-color: #ffee55;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #444;
+    box-shadow: white 0 0 5px;
+    transition: 0.4s;
+}
+section .section-container .join .to-signup:hover {
+    color: #ffee55;
+    background-color: #ffee5518;
+    transition: 0.4s;
 }
 section .section-container .join .to-signup a {
 }
 section .section-container .join .to-login {
+    margin-top: 10px;
+    font-size: 13px;
+    border-bottom: 1px solid white;
+    color: white;
 }
 section .section-container .join .to-login a {
 }
@@ -80,10 +122,15 @@ section .section-container .join .to-login a {
 footer {
 }
 footer .footer-content {
+    line-height: 10vh;
     text-align: center;
-    height: 5vh;
+    height: 10vh;
+    box-sizing: border-box;
+    background-color: #222;
 }
 footer .footer-content a {
+    color: #ddd;
+    padding: 0 20px;
 }
 
 /* --footer.pug */
@@ -91,7 +138,7 @@ footer .footer-content a {
 
 .login-container {
     border: 1px solid blueviolet;
-    height: 95vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -227,3 +274,66 @@ footer .footer-content a {
 }
 
 /* --join.pug */
+/* home.pug */
+
+.search-article {
+}
+.search-article .search-container,
+.analysis-article .analysis-container {
+    border: 1px solid black;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.search-article .search-container {
+    align-items: flex-start;
+}
+.search-article .search-container h2,
+.search-article .search-container p,
+.search-article .search-container a {
+    margin: 20px;
+    width: 400px;
+    text-align: center;
+}
+.search-article .search-container h2 {
+    border: 1px solid black;
+    font-size: 35px;
+}
+.search-article .search-container p {
+    border: 1px solid black;
+    font-size: 20px;
+}
+.search-article .search-container a {
+    border: 1px solid black;
+}
+.search-article .search-container a .search-btn {
+}
+
+.analysis-article {
+}
+.analysis-article .analysis-container {
+    align-items: flex-end;
+}
+.analysis-article .analysis-container h2,
+.analysis-article .analysis-container p,
+.analysis-article .analysis-container a {
+    margin: 20px;
+    width: 400px;
+    text-align: center;
+}
+.analysis-article .analysis-container h2 {
+    border: 1px solid black;
+    font-size: 35px;
+}
+.analysis-article .analysis-container p {
+    border: 1px solid black;
+    font-size: 20px;
+}
+.analysis-article .analysis-container a {
+    border: 1px solid black;
+}
+.analysis-article .analysis-container a .analysis-btn {
+}
+
+/* --home.pug */
