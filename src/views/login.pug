@@ -5,9 +5,20 @@ block content
         .login-container
             .local-login
                 form(action='#', method='POST')
-                    input(type='email', placeholder='email', required='')
-                    input(type='password', placeholder='password', required='')
-                    input(type='submit', value='Login')
+                    .field
+                        label(for="") Email
+                        input(type='email', class="insert",name="email", placeholder='email', required='')
+                    .field
+                        label(for="") Password
+                        input(type='password', class="insert",name='password', placeholder='password', required='')
+                    .field-btn
+                        input(type='submit', value='Login')
             .social-login
-                a(href='#') Google 계정으로 로그인
-                a(href='#') kakao 계정으로 로그인
+                a(href='#', id="google") 
+                    .field-social
+                        i.fab.fa-google
+                        |     login with google
+                a(href='#', id="kakao") 
+                    .field-social
+                        i.fas.fa-comment
+                        |     login with kakao

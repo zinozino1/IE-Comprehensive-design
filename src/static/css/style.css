@@ -19,9 +19,13 @@ header {
     width: 100%;
 }
 header #logo-container {
-    padding: 10px 0;
+    /* padding: 10px 0; */
+    height: 10vh;
+    display: flex;
+    align-items: center;
 }
 header #logo-container img {
+    margin: 0;
 }
 
 /* --header.pug */
@@ -32,7 +36,7 @@ section {
 
 section .section-container {
     /* padding-top: 10vh; */
-    height: 97vh;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -77,30 +81,149 @@ footer {
 }
 footer .footer-content {
     text-align: center;
+    height: 5vh;
 }
 footer .footer-content a {
 }
 
 /* --footer.pug */
 /* login.pug */
+
 .login-container {
-    height: 60vh;
+    border: 1px solid blueviolet;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .login-container .local-login {
-    border: 1px solid black;
 }
+
 .login-container .local-login form {
-}
-.login-container .local-login form input {
 }
 
 .login-container .social-login {
-    border: 1px solid black;
 }
 .login-container .social-login a {
 }
 
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    width: 350px;
+    margin: 10px;
+    padding: 10px;
+}
+.field-btn {
+    text-align: center;
+    border: 1px solid black;
+    width: 350px;
+    margin: 10px;
+    margin-bottom: 0;
+    padding: 10px;
+}
+.field label {
+    flex: 1;
+}
+.field input {
+    margin-left: 10px;
+    height: 30px;
+}
+.field .insert {
+    flex: 3;
+}
+
+.field-social {
+    margin: 10px;
+    text-align: center;
+    border: 1px solid black;
+    width: 350px;
+    padding: 10px;
+}
+
+#google {
+    color: white;
+}
+#google .field-social {
+    background-color: #dd4b39;
+}
+
+#kakao {
+    color: black;
+}
+#kakao .field-social {
+    background-color: #fae206;
+}
+
 /* --login.pug */
+/* join.pug */
+
+.join-container {
+    border: 1px solid blueviolet;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.join-container .local-join {
+}
+.join-container .local-join .join-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.join-container .local-join .join-field label {
+    flex: 1.5;
+}
+.join-container .local-join .join-field input {
+    margin-left: 10px;
+    height: 30px;
+}
+.join-container .local-join .join-field .insert {
+    flex: 3;
+}
+
+.join-container .local-join .join-field-btn {
+    text-align: center;
+    border: 1px solid black;
+    width: 400px;
+    margin: 10px;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.join-container .social-join {
+}
+.join-container .social-join a {
+}
+.join-container .social-join a .join-field-social {
+    margin: 10px;
+    text-align: center;
+    border: 1px solid black;
+    width: 400px;
+    padding: 10px;
+}
+
+#google-join {
+    color: white;
+}
+#google-join .join-field-social {
+    background-color: #dd4b39;
+}
+#kakao-join {
+    color: black;
+}
+#kakao-join .join-field-social {
+    background-color: #fae206;
+}
+
+/* --join.pug */
