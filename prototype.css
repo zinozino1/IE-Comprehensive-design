@@ -1,0 +1,101 @@
+@import "./reset.css";
+@import "./responsive.css";
+
+/* common css */
+.inner {
+    width: 1300px;
+    margin: auto;
+    border: 1px solid red;
+}
+
+.hello p {
+    color: red;
+}
+
+/* main.html */
+.container {
+}
+
+header {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.425);
+    width: 100%;
+}
+header #logo-container {
+    padding: 10px 0;
+}
+header #logo-container img {
+}
+
+section {
+}
+
+section .section-container {
+    /* padding-top: 10vh; */
+    height: 97vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+section .section-container .heading {
+    text-align: center;
+    border: 1px solid blue;
+}
+section .section-container .heading h1 {
+    font-size: 80px;
+    padding: 50px;
+}
+section .section-container .heading h3 {
+}
+
+section .section-container .main-desc {
+    border: 1px solid blue;
+}
+section .section-container .main-desc p {
+}
+
+section .section-container .join {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section .section-container .join .to-signup {
+}
+section .section-container .join .to-signup a {
+}
+section .section-container .join .to-login {
+}
+section .section-container .join .to-login a {
+}
+
+footer {
+}
+footer .footer-content {
+    text-align: center;
+}
+footer .footer-content a {
+}
+
+/* login.pug */
+
+.login-container {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-container .local-login {
+    border: 1px solid black;
+}
+.login-container .local-login form {
+}
+.login-container .local-login form input {
+}
+
+.login-container .social-login {
+    border: 1px solid black;
+}
+.login-container .social-login a {
+}

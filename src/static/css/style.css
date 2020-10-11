@@ -8,9 +8,10 @@
     border: 1px solid red;
 }
 
-/* main.html */
 .container {
 }
+
+/* header.pug */
 
 header {
     position: fixed;
@@ -22,6 +23,9 @@ header #logo-container {
 }
 header #logo-container img {
 }
+
+/* --header.pug */
+/* main.pug */
 
 section {
 }
@@ -66,6 +70,9 @@ section .section-container .join .to-login {
 section .section-container .join .to-login a {
 }
 
+/* --main.pug */
+/* footer.pug */
+
 footer {
 }
 footer .footer-content {
@@ -73,3 +80,27 @@ footer .footer-content {
 }
 footer .footer-content a {
 }
+
+/* --footer.pug */
+/* login.pug */
+.login-container {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-container .local-login {
+    border: 1px solid black;
+}
+.login-container .local-login form {
+}
+.login-container .local-login form input {
+}
+
+.login-container .social-login {
+    border: 1px solid black;
+}
+.login-container .social-login a {
+}
+
+/* --login.pug */
