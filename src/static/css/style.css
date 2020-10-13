@@ -50,7 +50,7 @@ section .section-container {
 section .section-container .heading {
     padding-right: 20px;
     text-align: center;
-    border: 1px solid blue;
+
     width: 430px;
     height: 160px;
 }
@@ -71,7 +71,7 @@ section .section-container .heading h3 {
 
 section .section-container .main-desc {
     box-sizing: border-box;
-    border: 1px solid blue;
+
     text-align: center;
     width: 500px;
     padding-right: 120px;
@@ -80,7 +80,7 @@ section .section-container .main-desc p {
 }
 
 section .section-container .join {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -337,3 +337,25 @@ footer .footer-content a {
 }
 
 /* --home.pug */
+/* cusror animation */
+
+@keyframes cursor {
+    0% {
+        border-right: 3px solid #fff;
+    }
+    50% {
+        border-right: 3px solid transparent;
+    }
+    100% {
+        border-right: 3px solid #fff;
+    }
+}
+
+#js-cursor {
+    padding-right: 5px;
+    color: #fff;
+
+    animation: cursor 1s infinite;
+}
+
+/* --cusror animation */

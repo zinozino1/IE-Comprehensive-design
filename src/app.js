@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 app.use("/static", express.static(path.join(__dirname, "static")));
 
 app.get("/", function (req, res) {
-    res.render("main");
+    res.render("main"); // login data
 });
 app.get("/login", function (req, res) {
     res.render("login");
