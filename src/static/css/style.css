@@ -33,7 +33,7 @@ header #logo-container a {
 /* --header.pug */
 /* main.pug */
 
-section {
+#main-section {
     background: url("../images/main4.jpg") no-repeat center center;
     background-size: cover;
     color: white;
@@ -210,7 +210,7 @@ footer .footer-content a {
 
 .join-container {
     border: 1px solid blueviolet;
-    height: 95vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -359,3 +359,43 @@ footer .footer-content a {
 }
 
 /* --cusror animation */
+/* mypage */
+
+.mypage-container {
+    border: 1px solid black;
+    padding-top: 10vh;
+    height: 100vh;
+    display: flex;
+}
+.mypage-container .mypage-list {
+    box-sizing: border-box;
+    padding: 25px;
+    flex: 1;
+    border: solid 1px #333;
+    /* background-color: #242a2f; */
+}
+.mypage-container .mypage-list ul {
+}
+.mypage-container .mypage-list ul li {
+}
+.mypage-container .mypage-list ul li a {
+    /* color: #fff; */
+}
+.mypage-container .mypage-list ul li a div {
+    margin: 25px 0;
+
+    /* box-shadow: 0 7px 15px rgba(0, 0, 0, 0.562);
+    border-radius: 0 10px; */
+    padding: 5px;
+}
+.mypage-container .mypage-list ul li a div:hover {
+    color: #3681d6;
+}
+
+.mypage-container .mypage-articles {
+    box-sizing: border-box;
+    flex: 5;
+    border: solid 1px #333;
+}
+
+/* --mypage */

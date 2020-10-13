@@ -30,4 +30,7 @@ app.get("/join", function (req, res) {
 app.get("/home", function (req, res) {
     res.render("home");
 });
+app.get("/mypage", function (req, res) {
+    res.render("mypage");
+});
 export default app;
