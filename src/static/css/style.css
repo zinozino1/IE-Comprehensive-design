@@ -445,4 +445,44 @@ footer .footer-content a {
     padding: 40px;
     box-sizing: border-box;
 }
+
 /* --edit */
+/* search */
+
+.searchDoc-container {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    height: 100vh;
+}
+.searchDoc-container .select-container {
+    border: 1px solid blueviolet;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchDoc-container .select-container h3 {
+}
+.searchDoc-container .select-container form {
+}
+.searchDoc-container .select-container form select {
+    margin: 0 10px;
+    width: 150px;
+    height: 30px;
+}
+
+.searchDoc-container .search-result-container {
+    border: 1px solid blueviolet;
+    flex: 5;
+    display: flex;
+    justify-content: center;
+}
+.searchDoc-container .search-result-container .search-result {
+    width: 900px;
+    border: 1px solid blue;
+    text-align: center;
+}
+
+/* --search */
