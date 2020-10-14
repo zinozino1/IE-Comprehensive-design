@@ -33,4 +33,7 @@ app.get("/home", function (req, res) {
 app.get("/mypage", function (req, res) {
     res.render("mypage");
 });
+app.get("/edit", function (req, res) {
+    res.render("edit");
+});
 export default app;

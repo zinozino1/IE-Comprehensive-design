@@ -9,15 +9,24 @@
     <body>
         <section>
             <div class="inner">
-                <div class="mypage-container">
-                    <div class="mypage-list">
-                        <ul>
-                            <li><a href="#">프로필 수정</a></li>
-                            <li><a href="#">합격 자소서 스크랩</a></li>
-                            <li><a href="#">나의 이력서</a></li>
-                        </ul>
-                    </div>
-                    <div class="mypage-articles"></div>
+                <div class="edit-container">
+                    <form action="" method="post">
+                        <div class="edit-input">
+                            <h3>제목</h3>
+                            <p id="input-title">가져온 제목</p>
+                            <h3>문항</h3>
+                            <input id="edit-req" type="text" />
+                            <h3>답변</h3>
+                            <input id="edit-res" type="text" />
+                        </div>
+                        <div class="edit-add">
+                            <button id="edit-add">✚</button>
+                        </div>
+                        <div class="editBtn-container">
+                            <input type="submit" value="등록" />
+                            <button id="edit-cancel">취소</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

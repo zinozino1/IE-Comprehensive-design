@@ -5,7 +5,7 @@
 .inner {
     width: 1300px;
     margin: auto;
-    /* border: 1px solid red; */
+    border: 1px solid red;
 }
 
 .container {
@@ -399,3 +399,50 @@ footer .footer-content a {
 }
 
 /* --mypage */
+/* edit */
+
+.edit-container {
+    border: 1px solid blueviolet;
+    height: 130vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.edit-container form {
+}
+.edit-container .edit-input {
+    border: 1px solid blueviolet;
+}
+.edit-container .edit-input h3 {
+}
+.edit-container .edit-input #input-title {
+}
+.edit-container .edit-input #edit-req {
+}
+.edit-container .edit-input #edit-res {
+}
+
+.edit-container .edit-add {
+    border: 1px solid blueviolet;
+    text-align: center;
+}
+.edit-container .edit-add #edit-add {
+}
+
+.edit-container .editBtn-container {
+    border: 1px solid blueviolet;
+    text-align: center;
+}
+.edit-container .editBtn-container input {
+}
+.edit-container .editBtn-container #edit-cancel {
+}
+
+.edit-input,
+.edit-add,
+.editBtn-container {
+    padding: 40px;
+    box-sizing: border-box;
+}
+/* --edit */
