@@ -39,4 +39,7 @@ app.get("/edit", function (req, res) {
 app.get("/search", function (req, res) {
     res.render("search");
 });
+app.get("/select", function (req, res) {
+    res.render("select");
+});
 export default app;

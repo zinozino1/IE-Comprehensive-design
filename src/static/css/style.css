@@ -5,7 +5,7 @@
 .inner {
     width: 1300px;
     margin: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .container {
@@ -337,7 +337,7 @@ footer .footer-content a {
 }
 
 /* --home.pug */
-/* cusror animation */
+/* Main cusror animation */
 
 @keyframes cursor {
     0% {
@@ -358,8 +358,8 @@ footer .footer-content a {
     animation: cursor 1s infinite;
 }
 
-/* --cusror animation */
-/* mypage */
+/* --Main cusror animation */
+/* mypage.pug */
 
 .mypage-container {
     border: 1px solid black;
@@ -398,8 +398,8 @@ footer .footer-content a {
     border: solid 1px #333;
 }
 
-/* --mypage */
-/* edit */
+/* --mypage.pug */
+/* edit.pug */
 
 .edit-container {
     border: 1px solid blueviolet;
@@ -446,8 +446,8 @@ footer .footer-content a {
     box-sizing: border-box;
 }
 
-/* --edit */
-/* search */
+/* --edit.pug */
+/* search.pug */
 
 .searchDoc-container {
     margin-top: 10vh;
@@ -485,4 +485,35 @@ footer .footer-content a {
     text-align: center;
 }
 
-/* --search */
+/* --search.pug */
+/* select.pug */
+
+.docSelect-container {
+    height: 100vh;
+    border: 1px solid blue;
+    padding-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.docSelect-container .new-doc {
+    text-align: center;
+    line-height: 80px;
+    width: 350px;
+    height: 80px;
+    border: 1px solid blueviolet;
+}
+.docSelect-container .new-doc a {
+}
+
+.docSelect-container .exist-doc {
+    line-height: 80px;
+    text-align: center;
+    margin-top: 350px;
+    height: 80px;
+    width: 350px;
+    border: 1px solid blueviolet;
+}
+.docSelect-container .exist-doc a {
+}
+/* --select.pug */
