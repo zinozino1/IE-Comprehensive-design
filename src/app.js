@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 import mongoose from "mongoose";
 import globalRouter from "./routers/globalRouter";
+import documentRouter from "./routers/documentRouter";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(morgan("dev"));
 app.use("/static", express.static(path.join(__dirname, "static")));
 
 app.use("/", globalRouter);
+app.use("/document", documentRouter);
 // app.use("/mypage", )
 // app.get("/", function (req, res) {
 //     res.render("main"); // login data

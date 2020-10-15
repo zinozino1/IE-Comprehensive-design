@@ -481,7 +481,7 @@ section .section-container .join .to-login a {
 /* search.pug */
 
 .searchDoc-container {
-    margin-top: 10vh;
+    padding-top: 10vh;
     display: flex;
     flex-direction: column;
     justify-items: center;
