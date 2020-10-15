@@ -403,7 +403,7 @@ footer .footer-content a {
 
 .edit-container {
     border: 1px solid blueviolet;
-    height: 130vh;
+    height: 140vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -516,4 +516,49 @@ footer .footer-content a {
 }
 .docSelect-container .exist-doc a {
 }
+
 /* --select.pug */
+/* analysis */
+
+.analysis-container {
+    height: 140vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.analysis-container .analysis-input {
+    border: 1px solid blueviolet;
+}
+.analysis-container .analysis-input h3 {
+}
+.analysis-container .analysis-input #anal-input-title {
+}
+.analysis-container .analysis-input #anal-req {
+}
+.analysis-container .analysis-input #anal-res {
+}
+
+.analysis-container .analBtn-container {
+    text-align: center;
+    border: 1px solid blueviolet;
+}
+.analysis-container .analBtn-container #anal-search {
+}
+.analysis-container .analBtn-container #anal-my {
+    margin-left: 20px;
+}
+
+.analysis-container .analSaveBtn-container {
+    text-align: center;
+    border: 1px solid blueviolet;
+}
+.analysis-container .analSaveBtn-container #anal-saveBtn {
+}
+.analysis-container .analysis-input,
+.analysis-container .analBtn-container,
+.analysis-container .analSaveBtn-container {
+    padding: 40px;
+    box-sizing: border-box;
+}
+/* --analysis */

@@ -8,7 +8,7 @@ block content
             form#edit-form(action='', method='post')
               .edit-input
                 h3 제목
-                p#input-title 가져온 제목
+                textarea#input-title(name="", cols="100", rows="2", form="edit-form")
                 h3 문항
                 textarea#edit-req(name="", cols="100", rows="10", form="edit-form")
                 h3 답변

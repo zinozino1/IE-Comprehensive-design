@@ -42,4 +42,7 @@ app.get("/search", function (req, res) {
 app.get("/select", function (req, res) {
     res.render("select");
 });
+app.get("/analysis", function (req, res) {
+    res.render("analysis");
+});
 export default app;
