@@ -1,19 +1,15 @@
 const targetText = document.getElementById("js-typing");
 
 const addLetter = function (params) {
-    let letters = targetText.innerHTML;
+    const letters = targetText.innerHTML;
 
-    let text1 = "  Resume.";
-    let text2 = "  Goal.";
-    let text3 = "  Passion.";
-    let text4 = "  Life.";
-    let elems = [text1, text2, text3, text4];
+    const elems = ["  Resume.", "  Goal.", "  Passion.", "  Life."];
     let tmpStr = "";
     let index = 0;
     let textIndex = 0;
     let eleIndex = 0;
 
-    let addInterval = setInterval(() => {
+    const addInterval = setInterval(() => {
         if (index > elems[eleIndex].length - 1) {
             tmpStr = tmpStr.slice(0, -1);
             textIndex++;

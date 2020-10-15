@@ -11,6 +11,19 @@
 .container {
 }
 
+/* 404.pug */
+
+.msg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+.msg-container #error-msg {
+    font-size: 30px;
+}
+
+/* --404.pug */
 /* header.pug */
 
 header {
@@ -51,7 +64,7 @@ section .section-container .heading {
     padding-right: 20px;
     text-align: center;
 
-    width: 430px;
+    width: 440px;
     height: 160px;
 }
 section .section-container .heading h1 {
@@ -119,18 +132,36 @@ section .section-container .join .to-login a {
 /* --main.pug */
 /* footer.pug */
 
-footer {
-}
-footer .footer-content {
-    line-height: 10vh;
-    text-align: center;
-    height: 10vh;
-    box-sizing: border-box;
+.footer-content {
+    font-size: 14px;
+    height: 15vh;
     background-color: #222;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
-footer .footer-content a {
+
+.footer-content .author-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer-content .author-container .social-logo {
+}
+.footer-content .author-container a {
     color: #ddd;
-    padding: 0 20px;
+    margin: 0 10px;
+}
+.footer-content .author-container a i {
+    color: #ccc;
+    font-size: 30px;
+}
+.footer-content .author-container h3 {
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 13px;
 }
 
 /* --footer.pug */
@@ -138,7 +169,7 @@ footer .footer-content a {
 
 .login-container {
     border: 1px solid blueviolet;
-    height: 90vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,7 +241,7 @@ footer .footer-content a {
 
 .join-container {
     border: 1px solid blueviolet;
-    height: 90vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -518,7 +549,7 @@ footer .footer-content a {
 }
 
 /* --select.pug */
-/* analysis */
+/* analysis.pug */
 
 .analysis-container {
     height: 140vh;
@@ -561,4 +592,4 @@ footer .footer-content a {
     padding: 40px;
     box-sizing: border-box;
 }
-/* --analysis */
+/* --analysis.pug */
