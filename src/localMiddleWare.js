@@ -1,13 +1,15 @@
 import multer from "multer";
-import routes from "./routes";
 import multerS3 from "multer-s3";
 import dotenv from "dotenv";
 import aws from "aws-sdk";
+import routes from "./routes";
 
 dotenv.config();
 
 export const localMiddleWare = (req, res, next) => {
-    req.locals.routes = routes;
+    res.locals.routes = routes;
+    res.locals.loggedUser = req.user || null;
+
     next();
 };
 

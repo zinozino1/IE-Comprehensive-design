@@ -4,16 +4,16 @@ block content
     .inner
         .join-container
             .local-join
-                form(action='#', method='POST')
+                form(action='/join', method='POST')
                     .join-field
                         label(for="") Email
                         input(type='email',class="insert",name="email" ,placeholder='email', required='')
                     .join-field
                         label(for="") Nickname
-                        input(type='text',class="insert",name='nickname' ,placeholder='nickname', required='')
+                        input(type='text',class="insert",name='nickName' ,placeholder='nickname', required='')
                     .join-field
                         label(for="") Password
-                        input(type='password',class="insert",name='password1' ,placeholder='password', required='')
+                        input(type='password',class="insert",name='password' ,placeholder='password', required='')
                     .join-field
                         label(for="") Verify Password
                         input(type='password',class="insert",name='password2' ,placeholder='verify password', required='')

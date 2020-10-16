@@ -14,7 +14,11 @@ block content
                 .main-desc
                     p "Clover" 는 합격 자소서 데이터를 기반으로 한 자소서 작성 가이드 플랫폼입니다.
                 .join
-                    a#to-signup(href='/join') 
-                        .to-signup 함께하기
-                    a#to-login(href='/login') 
-                        .to-login  이미 회원이신가요?
+                    if loggedUser
+                        a#to-signup(href='/home') 
+                            .to-signup 시작하기
+                    else
+                        a#to-signup(href='/join') 
+                            .to-signup 함께하기
+                        a#to-login(href='/login') 
+                            .to-login  이미 회원이신가요?

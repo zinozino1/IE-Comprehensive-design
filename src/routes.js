@@ -21,6 +21,12 @@ const routes = {
         if (id) return `/${id}/analysis`;
         else return "/analysis";
     },
+
+    // social login
+    google: "/auth/google",
+    googleCallback: "/auth/google/callback",
+    kakao: "/auth/kakao",
+    kakaoCallback: "/auth/kakao/callback",
 };
 
 export default routes;
