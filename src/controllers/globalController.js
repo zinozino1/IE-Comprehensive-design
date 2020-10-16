@@ -8,11 +8,11 @@ export const getMain = (req, res) => {
 
 export const getHome = (req, res) => {
     res.render("home");
+    console.log(req.user);
 };
 
 export const getLogin = (req, res) => {
     res.render("login");
-    console.log(req.user);
 };
 export const postLogin = passport.authenticate("local", {
     failureRedirect: routes.login,
@@ -45,4 +45,79 @@ export const postJoin = async (req, res, next) => {
     }
 };
 
-export const getGooglelogin = (req, res) => {};
+export const getGooglelogin = passport.authenticate("google", {
+    scope: ["profile", "email"],
+});
+
+export const postGoogleLogin = (req, res) => {
+    res.redirect(routes.home);
+};
+
+export const googleLoginCallBack = async function (
+    accessToken,
+    refreshToken,
+    profile,
+    cb,
+) {
+    const {
+        id,
+        _json: { name, email },
+    } = profile;
+
+    try {
+        const user = await userModel.findOne({ email });
+        if (user) {
+            user.googleId = id;
+            user.save();
+            return cb(null, user);
+        } else {
+            const newUser = await userModel.create({
+                email,
+                nickName: name,
+                googleId: id,
+            });
+            return cb(null, newUser);
+        }
+    } catch (error) {
+        return cb(error);
+    }
+};
+
+export const getKakaoLogin = passport.authenticate("kakao");
+
+export const postKakaoLogin = (req, res) => {
+    res.redirect(routes.home);
+};
+
+export const kakaoLoginCallBack = async function (
+    accessToken,
+    refreshToken,
+    profile,
+    cb,
+) {
+    const {
+        username,
+        _json: {
+            id,
+            kakao_account: { email },
+        },
+    } = profile;
+
+    try {
+        const user = await userModel.findOne({ email });
+        if (user) {
+            user.kakaoId = id;
+            user.save();
+            return cb(null, user);
+        } else {
+            const newUser = await userModel.create({
+                email,
+                nickName: username,
+                kakaoId: id,
+            });
+            return cb(null, newUser);
+        }
+    } catch (error) {
+        return cb(error);
+    }
+};

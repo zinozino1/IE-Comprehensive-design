@@ -16,7 +16,7 @@ module.exports = {
         "no-console": "off",
         "spaced-comment": "off",
         "no-else-return": "off",
-
+        camelcase: "off",
         "no-unused-vars": "off",
     },
 };
