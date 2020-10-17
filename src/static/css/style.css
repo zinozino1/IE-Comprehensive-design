@@ -37,10 +37,22 @@ header #logo-container {
     display: flex;
     align-items: center;
 }
-header #logo-container a {
+header #logo-container #logo {
     color: white;
     font-size: 36px;
     margin-left: 10px;
+    flex: 8;
+}
+
+header #logo-container #mypage {
+    flex: 1;
+    color: #fff;
+    font-weight: 600;
+}
+header #logo-container #logout {
+    flex: 1;
+    color: #fff;
+    font-weight: 600;
 }
 
 /* --header.pug */
@@ -485,7 +497,7 @@ section .section-container .join .to-login a {
     display: flex;
     flex-direction: column;
     justify-items: center;
-    height: 100vh;
+    height: 120vh;
 }
 .searchDoc-container .select-container {
     border: 1px solid blueviolet;

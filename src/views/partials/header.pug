@@ -1,6 +1,10 @@
 header
     .inner
         #logo-container
-            a(href='/') Clover
-            //- 로그인 된 상태면 home으로, 아니면 main으로 보내야함
+            if loggedUser
+                a#logo(href='/') Clover
+                a#mypage(href="/mypage") MYPAGE
+                a#logout(href="/logout") LOGOUT
+            else
+                a#logo(href='/') Clover
                 

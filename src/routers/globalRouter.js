@@ -12,19 +12,23 @@ import {
     postGoogleLogin,
     getKakaoLogin,
     postKakaoLogin,
+    logout,
 } from "../controllers/globalController";
+import { onlyPrivate } from "../localMiddleWare";
 
 const globalRouter = express.Router();
 
 globalRouter.get(routes.main, getMain);
 
-globalRouter.get(routes.home, getHome);
+globalRouter.get(routes.home, onlyPrivate, getHome);
 
 globalRouter.get(routes.login, getLogin);
 globalRouter.post(routes.login, postLogin);
 
 globalRouter.get(routes.join, getJoin);
 globalRouter.post(routes.join, postJoin, postLogin);
+
+globalRouter.get(routes.logout, logout);
 
 globalRouter.get(routes.google, getGooglelogin);
 globalRouter.get(

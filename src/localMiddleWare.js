@@ -23,7 +23,7 @@ export const onlyPublic = (req, res, next) => {
 
 export const onlyPrivate = (req, res, next) => {
     if (!req.user) {
-        res.redirect(routes.home);
+        res.redirect(routes.main);
     } else {
         next();
     }
