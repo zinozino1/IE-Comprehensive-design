@@ -6,26 +6,37 @@ block content
           .searchDoc-container
             .select-container
               h3 Search
-              form(action='', method='post')
-                select(name='company', id='', value='회사')
-                    option(value='') 회사
-                    option(value='1') 1
-                    option(value='2') 2
-                    option(value='3') 3
-                    option(value='4') 4
-                select(name='field', id='', value='지원분야')
+              form#search-form(method='post')
+                //- select(name='company', id='', value='회사')
+                //-     option(value='') 회사
+                //-     option(value='1') 1
+                //-     option(value='2') 2
+                //-     option(value='3') 3
+                //-     option(value='4') 4
+                select#task-select(name='task')
                     option(value='') 지원분야
-                    option(value='1') 1
-                    option(value='2') 2
-                    option(value='3') 3
-                    option(value='4') 4
-                select(name='question', id='', value='자소서 항목')
+                    option(value='1') 경영 / 사무 / 영업 / 마케팅 / 금융 / 자재 / 기획
+                    option(value='2') IT / 전산 / 네트워크 / 데이터베이스
+                    option(value='3') 생산 / 제조 / 환경 / 플랜트 / 기계 설비 / 공정 / 설계 / 설비 / 품질
+                    option(value='4') 건설 / 건축 / 시공 
+                    option(value='5') 유통 / 무역
+                    option(value='6') R&D
+                    option(value='7') 전기 / 전자(설계, 제어)
+                    option(value='8') 기타
+                select#question-select(name='question')
                     option(value='') 자소서 항목
-                    option(value='1') 1
-                    option(value='2') 2
-                    option(value='3') 3
-                    option(value='4') 4
-                input(type='submit', value='🔍')
+                    option(value='1') 지원동기
+                    option(value='2') 자기소개 / 성장과정 / 가치관, 슬로건
+                    option(value='3') 목표 / 포부 / 비전 
+                    option(value='4') 직무관련 장단점 / 보완
+                    option(value='5') 성격상 장단점
+                    option(value='6') 직무역량 / 경쟁력 에 관한 경험
+                    option(value='7') 자발적,도전적 목표 / 성취 / 새로운 시도 / 성공 / 실패사례
+                    option(value='8') 문제 발생 및 해결 경험
+                    option(value='9') 협업 / 대인관계 / 소속 경험
+                    option(value='10') 기타경험
+                    option(value='11') 기타(사회이슈, 자유기술, 특정문구, 아이디어 제시)
+                input#docSearch-btn(type='submit', value='🔍')
             .search-result-container
                 .search-result
                     | 검색 결과가 없습니다.
