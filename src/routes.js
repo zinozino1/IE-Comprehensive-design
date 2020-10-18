@@ -17,6 +17,8 @@ const routes = {
     newDoc: "/newDoc",
     add: "/add",
     search: "/search",
+    taskSearch: "/taskSearch",
+    questionSearch: "/questionSearch",
     select: "/select",
     analysis: (id) => {
         if (id) return `/${id}/analysis`;

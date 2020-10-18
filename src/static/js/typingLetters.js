@@ -33,4 +33,4 @@ const init = function (params) {
     addLetter();
 };
 
-init();
+if (targetText) init();

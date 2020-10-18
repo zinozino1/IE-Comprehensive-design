@@ -7,9 +7,34 @@
     margin: auto;
     /* border: 1px solid red; */
 }
-
 .container {
 }
+/* --common css */
+
+/* animation, js css */
+/* Main cusror animation */
+
+@keyframes cursor {
+    0% {
+        border-right: 3px solid #fff;
+    }
+    50% {
+        border-right: 3px solid transparent;
+    }
+    100% {
+        border-right: 3px solid #fff;
+    }
+}
+
+#js-cursor {
+    padding-right: 5px;
+    color: #fff;
+
+    animation: cursor 1s infinite;
+}
+
+/* --Main cusror animation */
+/* --animation, js css */
 
 /* 404.pug */
 
@@ -380,28 +405,6 @@ section .section-container .join .to-login a {
 }
 
 /* --home.pug */
-/* Main cusror animation */
-
-@keyframes cursor {
-    0% {
-        border-right: 3px solid #fff;
-    }
-    50% {
-        border-right: 3px solid transparent;
-    }
-    100% {
-        border-right: 3px solid #fff;
-    }
-}
-
-#js-cursor {
-    padding-right: 5px;
-    color: #fff;
-
-    animation: cursor 1s infinite;
-}
-
-/* --Main cusror animation */
 /* mypage.pug */
 
 .mypage-container {

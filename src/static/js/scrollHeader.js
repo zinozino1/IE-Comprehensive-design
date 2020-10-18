@@ -13,4 +13,4 @@ const init = function () {
     window.addEventListener("scroll", scrollHandler);
 };
 
-init();
+if (header) init();

@@ -17,6 +17,9 @@ module.exports = {
         "spaced-comment": "off",
         "no-else-return": "off",
         camelcase: "off",
+        "consistent-return": "off",
+        "no-empty-function": "off",
+        "no-plusplus": "off",
         "no-unused-vars": "off",
     },
 };

@@ -6,11 +6,12 @@ import {
     getAdd,
     postAdd,
     getSearch,
-    postSearch,
     getSelect,
     postSelect,
     getAnalysis,
     postAnalysis,
+    postTaskSearch,
+    postQuestionSearch,
 } from "../controllers/documentController";
 
 const documentRouter = express.Router();
@@ -22,7 +23,8 @@ documentRouter.get(routes.add, getAdd);
 documentRouter.post(routes.add, postAdd);
 
 documentRouter.get(routes.search, getSearch);
-documentRouter.post(routes.search, postSearch);
+documentRouter.post(routes.taskSearch, postTaskSearch);
+documentRouter.post(routes.questionSearch, postQuestionSearch);
 
 documentRouter.get(routes.select, getSelect);
 documentRouter.post(routes.select, postSelect);
