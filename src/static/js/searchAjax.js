@@ -12,11 +12,14 @@ const taskSearchRealTime = function (result) {
     // html element생성하는 함수
     // html 그리는 함수
 
+    const column = document.createElement("div");
+    column.innerText = "-회사명-               -직무-";
+    resultContainer.appendChild(column);
     result.forEach(function (item) {
         const newDocContainer = document.createElement("div");
         newDocContainer.className = "new-document";
         newDocContainer.style.border = "1px solid black";
-        for (let i = 0; i < item.length; i++) {
+        for (let i = 0; i < 1; i++) {
             newDocContainer.innerText += `${item[i].company} `;
             //resultContainer.innerText += `${i}번째 회사 : ${item[i].company} `;
         }

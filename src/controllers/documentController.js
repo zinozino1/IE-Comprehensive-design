@@ -18,15 +18,11 @@ export const postTaskSearch = async (req, res) => {
             .find()
             .where("task")
             .equals(`${req.body.task}`);
-        // const newArr = [
-        //     ...documents.map(function (item) {
-        //         return item.indexString;
-        //     }),
-        // ];
-        const wholeArr = [];
 
+        const wholeArr = [];
         const target = [];
         let key = documents[0].indexString;
+
         target.push(key);
         for (let i = 0; i < documents.length; i++) {
             if (documents[i].indexString !== key) {
@@ -34,7 +30,6 @@ export const postTaskSearch = async (req, res) => {
                 key = documents[i].indexString;
             }
         }
-        // console.log(target);
         for (let i = 0; i < target.length; i++) {
             const tmpArr = documents.filter(function (item) {
                 const innerKey = target[i];
@@ -42,22 +37,14 @@ export const postTaskSearch = async (req, res) => {
             });
             wholeArr.push(tmpArr);
         }
-        // for (let i = 0; i < wholeArr[0].length; i++) {
-        //     console.log(wholeArr[0][i]);
-        // }
-        console.log(wholeArr.length);
-        res.send({ result: wholeArr });
-        // .where("question")
-        // .equals(`${req.body.question}`);
 
-        // console.log(documents);
+        res.send({ result: wholeArr });
     } catch (error) {
         console.log(error);
         res.status(400);
     } finally {
         res.end();
     }
-    res.end();
 };
 
 export const postQuestionSearch = (req, res) => {};
