@@ -34,6 +34,7 @@
 }
 
 /* --Main cusror animation */
+
 /* --animation, js css */
 
 /* 404.pug */
@@ -500,7 +501,7 @@ section .section-container .join .to-login a {
     display: flex;
     flex-direction: column;
     justify-items: center;
-    height: 120vh;
+    height: 75vh;
 }
 .searchDoc-container .select-container {
     border: 1px solid blueviolet;
@@ -529,6 +530,21 @@ section .section-container .join .to-login a {
     width: 900px;
     border: 1px solid blue;
     text-align: center;
+}
+
+.searchDoc-container .paging-container {
+    border: 1px solid blueviolet;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.searchDoc-container .paging-container .pages {
+    display: flex;
+}
+.searchDoc-container .paging-container .page {
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid red;
 }
 
 /* --search.pug */
