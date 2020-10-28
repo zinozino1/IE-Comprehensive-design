@@ -64,14 +64,18 @@ export const postAnalysis = (req, res) => {
     console.log(req.body);
     const { body } = req;
     let options = {
+        mode: "text",
         scriptPath: path.join(__dirname, "../analysis/"),
         args: [JSON.stringify({ body })],
+        encoding: "utf8",
     };
 
     PythonShell.run("test.py", options, function (err, data) {
         //res.status(200).json({ data: JSON.parse(data), success: true });
+        const result = JSON.parse(data);
+        console.log(result);
+        console.log(result.title);
 
-        console.log(data);
         res.end();
     });
 };
