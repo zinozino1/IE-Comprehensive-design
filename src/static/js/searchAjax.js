@@ -8,14 +8,65 @@ const questionSearchForm = document.querySelector("#questionSearch-form");
 
 const resultContainer = document.querySelector("#js-search-result");
 
+let currentPage = 1;
+
+const func = function () {
+    console.log(1111111111);
+};
+
+const paging = function (result) {
+    const dataPerPage = 10;
+    let pageCount = 5;
+    const totalPage = Math.ceil(result.length / 10);
+    const pageGroup = Math.ceil(currentPage / pageCount);
+    console.log(`totalpage : ${totalPage}`);
+    console.log(`pageGroup : ${pageGroup}`);
+
+    let last = pageGroup * pageCount;
+    if (last > totalPage) last = totalPage;
+    if (totalPage < 5) pageCount = 1;
+    let first = last - (pageCount - 1);
+    let next = last + 1;
+    let prev = first - 1;
+
+    console.log(`first : ${first}`);
+    console.log(`last : ${last}`);
+    console.log(`next : ${next}`);
+    console.log(`prev : ${prev}`);
+    console.log(`current Page : ${currentPage}`);
+
+    const pageContainer = document.querySelector(".paging-container");
+    let html = "";
+
+    if (prev > 0) {
+        html += `<a id='prev' onclick="currentPage = ${prev};
+    console.log(currentPage);"><</a> `;
+    }
+    for (let i = first; i <= last; i++) {
+        html += `<a id=${i} onclick="currentPage = ${i};
+        console.log(currentPage);">${i}</a> `; // TLqkf
+    }
+    if (last < totalPage) {
+        html += `<a id='next' onclick="currentPage = ${next};
+        console.log(currentPage)">></a>`;
+    }
+
+    pageContainer.innerHTML = html;
+    document.querySelectorAll(".paging-container a").forEach(function (item) {
+        item.onclick = function () {
+            paging(result); // curreunt page 바꿔야댐
+        };
+    });
+};
+
 const taskSearchRealTime = function (result) {
-    // html element생성하는 함수
-    // html 그리는 함수
-    let count = 0;
+    console.log(result.length);
     const column = document.createElement("div");
     column.innerText = "-회사명-               -직무-";
     resultContainer.appendChild(column);
     resultContainer.innerHTML = "";
+
+    paging(result);
 
     for (let i = 0; i < 10; i++) {
         const newDocContainer = document.createElement("div");
@@ -53,45 +104,6 @@ const taskSearchRealTime = function (result) {
         }
         resultContainer.appendChild(newDocContainer);
     }
-
-    // result.forEach(function (item) {
-    //     const newDocContainer = document.createElement("div");
-    //     newDocContainer.className = "new-document";
-    //     newDocContainer.style.border = "1px solid black";
-    //     for (let i = 0; i < 1; i++) {
-    //         switch (item[i].task) {
-    //             case `1`:
-    //                 newDocContainer.innerText += `${item[i].company} | 경영 / 사무 / 영업 / 마케팅 / 금융 / 자재 / 기획 `;
-    //                 break;
-    //             case `2`:
-    //                 newDocContainer.innerText += `${item[i].company} | IT / 전산 / 네트워크 / 데이터베이스 `;
-    //                 break;
-    //             case `3`:
-    //                 newDocContainer.innerText += `${item[i].company} | 생산 / 제조 / 환경 / 플랜트 / 기계 설비 / 공정 / 설계 / 설비 / 품질 `;
-    //                 break;
-    //             case `4`:
-    //                 newDocContainer.innerText += `${item[i].company} | 건설 / 건축 / 시공  `;
-    //                 break;
-    //             case `5`:
-    //                 newDocContainer.innerText += `${item[i].company} | 유통 / 무역 `;
-    //                 break;
-    //             case `6`:
-    //                 newDocContainer.innerText += `${item[i].company} | R&D `;
-    //                 break;
-    //             case `7`:
-    //                 newDocContainer.innerText += `${item[i].company} | 전기/전자(설계, 제어) `;
-    //                 break;
-    //             case `8`:
-    //                 newDocContainer.innerText += `${item[i].company} | 기타 `;
-    //                 break;
-    //             default:
-    //                 break;
-    //         }
-    //         // newDocContainer.innerText += `${item[i].company}  ${item[i].task}`;
-    //         //resultContainer.innerText += `${i}번째 회사 : ${item[i].company}d `;
-    //     }
-    //     resultContainer.appendChild(newDocContainer);
-    // });
 };
 
 const taskSearchHandler = async function (event) {

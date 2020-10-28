@@ -1,4 +1,7 @@
+import path from "path";
 import documentModel from "../models/document";
+
+const { PythonShell } = require("python-shell");
 
 export const getEdit = (req, res) => {
     res.render("edit");
@@ -57,4 +60,18 @@ export const postSelect = (req, res) => {};
 export const getAnalysis = (req, res) => {
     res.render("analysis");
 };
-export const postAnalysis = (req, res) => {};
+export const postAnalysis = (req, res) => {
+    console.log(req.body);
+    const { body } = req;
+    let options = {
+        scriptPath: path.join(__dirname, "../analysis/"),
+        args: [JSON.stringify({ body })],
+    };
+
+    PythonShell.run("test.py", options, function (err, data) {
+        //res.status(200).json({ data: JSON.parse(data), success: true });
+
+        console.log(data);
+        res.end();
+    });
+};

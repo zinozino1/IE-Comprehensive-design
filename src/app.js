@@ -15,6 +15,8 @@ import documentRouter from "./routers/documentRouter";
 import "./passport";
 import { localMiddleWare } from "./localMiddleWare";
 
+const { PythonShell } = require("python-shell");
+
 dotenv.config();
 const app = express();
 const CookieStore = MongoStore(session);
