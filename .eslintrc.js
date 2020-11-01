@@ -17,6 +17,7 @@ module.exports = {
         "spaced-comment": "off",
         "no-else-return": "off",
         camelcase: "off",
+        "no-loop-func": "off",
         "consistent-return": "off",
         "no-empty-function": "off",
         "no-plusplus": "off",

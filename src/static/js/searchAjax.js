@@ -17,15 +17,25 @@ const func = function () {
 const paging = function (result) {
     const dataPerPage = 10;
     let pageCount = 5;
+
     const totalPage = Math.ceil(result.length / 10);
     const pageGroup = Math.ceil(currentPage / pageCount);
     console.log(`totalpage : ${totalPage}`);
     console.log(`pageGroup : ${pageGroup}`);
 
     let last = pageGroup * pageCount;
-    if (last > totalPage) last = totalPage;
-    if (totalPage < 5) pageCount = 1;
-    let first = last - (pageCount - 1);
+    let lastDiff = 0;
+    if (last > totalPage) {
+        lastDiff = last - totalPage;
+        last = totalPage;
+    }
+    if (totalPage < 5) pageCount = totalPage;
+    let first = 0;
+    if (lastDiff === 0) {
+        first = last - (pageCount - 1);
+    } else {
+        first = last + lastDiff - 4;
+    }
     let next = last + 1;
     let prev = first - 1;
 
@@ -39,24 +49,35 @@ const paging = function (result) {
     let html = "";
 
     if (prev > 0) {
-        html += `<a id='prev' onclick="currentPage = ${prev};
-    console.log(currentPage);"><</a> `;
+        html += `<a id='prev'><</a> `;
     }
     for (let i = first; i <= last; i++) {
-        html += `<a id=${i} onclick="currentPage = ${i};
-        console.log(currentPage);">${i}</a> `; // TLqkf
+        html += `<a id=${i}>${i}</a> `;
     }
     if (last < totalPage) {
-        html += `<a id='next' onclick="currentPage = ${next};
-        console.log(currentPage)">></a>`;
+        html += `<a id='next'>></a>`;
     }
 
     pageContainer.innerHTML = html;
-    document.querySelectorAll(".paging-container a").forEach(function (item) {
-        item.onclick = function () {
-            paging(result); // curreunt page 바꿔야댐
-        };
-    });
+    const pages = document.querySelectorAll(".paging-container a");
+    for (let i = 0; i < pages.length; i++) {
+        pages[i].addEventListener("click", function (e) {
+            if (pages[i].id === "prev") {
+                currentPage = prev;
+            } else if (pages[i].id === "next") {
+                currentPage = next;
+            } else {
+                currentPage = parseInt(pages[i].id);
+            }
+
+            paging(result);
+        });
+    }
+    // document.querySelectorAll(".paging-container a").forEach(function (item) {
+    //     item.onclick = function () {
+    //         paging(result); // curreunt page 바꿔야댐
+    //     };
+    // });
 };
 
 const taskSearchRealTime = function (result) {
@@ -67,6 +88,8 @@ const taskSearchRealTime = function (result) {
     resultContainer.innerHTML = "";
 
     paging(result);
+
+    // 따로 함수로 뺴야함
 
     for (let i = 0; i < 10; i++) {
         const newDocContainer = document.createElement("div");
@@ -107,6 +130,7 @@ const taskSearchRealTime = function (result) {
 };
 
 const taskSearchHandler = async function (event) {
+    currentPage = 1;
     let resultArr = [];
     const searchReq = {
         task: taskSelect.value,
