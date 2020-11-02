@@ -50,7 +50,21 @@ export const postTaskSearch = async (req, res) => {
     }
 };
 
-export const postQuestionSearch = (req, res) => {};
+export const postQuestionSearch = async (req, res) => {
+    console.log(req.body);
+    try {
+        const documents = await documentModel
+            .find()
+            .where("question")
+            .equals(`${req.body.question}`);
+        res.send({ result: documents });
+    } catch (error) {
+        console.log(error);
+        res.status(400);
+    } finally {
+        res.end();
+    }
+};
 
 export const getSelect = (req, res) => {
     res.render("select");
