@@ -10,8 +10,63 @@ const resultContainer = document.querySelector("#js-search-result");
 
 let currentPage = 1;
 
-const func = function () {
-    console.log(1111111111);
+const pagingData = function (result, curr) {
+    resultContainer.innerHTML = "";
+    for (let i = curr * 10 - 9; i <= curr * 10; i++) {
+        const newDocContainer = document.createElement("div");
+        newDocContainer.className = "new-document";
+        newDocContainer.style.border = "1px solid black";
+        newDocContainer.addEventListener("click", function (e) {
+            if (newDocContainer.id === "clicked") {
+                newDocContainer.id = "";
+                console.log(newDocContainer.firstChild.nextSibling);
+                newDocContainer.removeChild(
+                    newDocContainer.firstChild.nextSibling,
+                );
+            } else {
+                newDocContainer.id = "clicked";
+                const newDocDesc = document.createElement("div");
+                newDocDesc.className = "document-desc";
+                newDocDesc.style.border = "1px solid red";
+                for (let j = 0; j < result[i].length; j++) {
+                    newDocDesc.innerHTML += `question : ${result[i][j].question},,,,, answer : ${result[i][j].answer}`;
+                }
+                newDocContainer.appendChild(newDocDesc);
+            }
+        });
+        if (!result[i]) break;
+        for (let j = 0; j < 1; j++) {
+            switch (result[i][j].task) {
+                case `1`:
+                    newDocContainer.innerText += `${result[i][j].company} | 경영 / 사무 / 영업 / 마케팅 / 금융 / 자재 / 기획 `;
+                    break;
+                case `2`:
+                    newDocContainer.innerText += `${result[i][j].company} | IT / 전산 / 네트워크 / 데이터베이스 `;
+                    break;
+                case `3`:
+                    newDocContainer.innerText += `${result[i][j].company} | 생산 / 제조 / 환경 / 플랜트 / 기계 설비 / 공정 / 설계 / 설비 / 품질 `;
+                    break;
+                case `4`:
+                    newDocContainer.innerText += `${result[i][j].company} | 건설 / 건축 / 시공  `;
+                    break;
+                case `5`:
+                    newDocContainer.innerText += `${result[i][j].company} | 유통 / 무역 `;
+                    break;
+                case `6`:
+                    newDocContainer.innerText += `${result[i][j].company} | R&D `;
+                    break;
+                case `7`:
+                    newDocContainer.innerText += `${result[i][j].company} | 전기/전자(설계, 제어) `;
+                    break;
+                case `8`:
+                    newDocContainer.innerText += `${result[i][j].company} | 기타 `;
+                    break;
+                default:
+                    break;
+            }
+        }
+        resultContainer.appendChild(newDocContainer);
+    }
 };
 
 const paging = function (result) {
@@ -70,6 +125,7 @@ const paging = function (result) {
                 currentPage = parseInt(pages[i].id);
             }
 
+            pagingData(result, currentPage);
             paging(result);
         });
     }
@@ -80,7 +136,7 @@ const paging = function (result) {
     // });
 };
 
-const taskSearchRealTime = function (result) {
+const taskDataHandler = function (result) {
     console.log(result.length);
     const column = document.createElement("div");
     column.innerText = "-회사명-               -직무-";
@@ -88,45 +144,7 @@ const taskSearchRealTime = function (result) {
     resultContainer.innerHTML = "";
 
     paging(result);
-
-    // 따로 함수로 뺴야함
-
-    for (let i = 0; i < 10; i++) {
-        const newDocContainer = document.createElement("div");
-        newDocContainer.className = "new-document";
-        newDocContainer.style.border = "1px solid black";
-        for (let j = 0; j < 1; j++) {
-            switch (result[i][j].task) {
-                case `1`:
-                    newDocContainer.innerText += `${result[i][j].company} | 경영 / 사무 / 영업 / 마케팅 / 금융 / 자재 / 기획 `;
-                    break;
-                case `2`:
-                    newDocContainer.innerText += `${result[i][j].company} | IT / 전산 / 네트워크 / 데이터베이스 `;
-                    break;
-                case `3`:
-                    newDocContainer.innerText += `${result[i][j].company} | 생산 / 제조 / 환경 / 플랜트 / 기계 설비 / 공정 / 설계 / 설비 / 품질 `;
-                    break;
-                case `4`:
-                    newDocContainer.innerText += `${result[i][j].company} | 건설 / 건축 / 시공  `;
-                    break;
-                case `5`:
-                    newDocContainer.innerText += `${result[i][j].company} | 유통 / 무역 `;
-                    break;
-                case `6`:
-                    newDocContainer.innerText += `${result[i][j].company} | R&D `;
-                    break;
-                case `7`:
-                    newDocContainer.innerText += `${result[i][j].company} | 전기/전자(설계, 제어) `;
-                    break;
-                case `8`:
-                    newDocContainer.innerText += `${result[i][j].company} | 기타 `;
-                    break;
-                default:
-                    break;
-            }
-        }
-        resultContainer.appendChild(newDocContainer);
-    }
+    pagingData(result, 1);
 };
 
 const taskSearchHandler = async function (event) {
@@ -159,9 +177,13 @@ const taskSearchHandler = async function (event) {
             resultArr = json.result;
 
             console.log(json.result[0][0].task);
+        })
+        .catch((error) => {
+            resultContainer.innerHTML = "검색 결과가 없습니다.";
+            console.log(error);
         });
 
-    taskSearchRealTime(resultArr);
+    taskDataHandler(resultArr);
 };
 
 const questionSearchHandler = async function (event) {};
