@@ -73,8 +73,8 @@ export const postAnalysis = (req, res) => {
     PythonShell.run("test.py", options, function (err, data) {
         res.status(200).json({ data: JSON.parse(data), success: true });
         const result = JSON.parse(data);
-        console.log(result);
-        console.log(result.title);
+        // console.log(result);
+        // console.log(result.title);
 
         res.end();
     });
