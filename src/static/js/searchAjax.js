@@ -19,12 +19,11 @@ const pagingData = function (result, curr) {
             newDocContainer.className = "new-document";
             newDocContainer.style.border = "1px solid black";
             newDocContainer.addEventListener("click", function (e) {
-                e.stopPropagation();
                 if (newDocContainer.id === "clicked") {
                     newDocContainer.id = "";
-                    console.log(newDocContainer.firstChild.nextSibling);
+
                     newDocContainer.removeChild(
-                        newDocContainer.firstChild.nextSibling,
+                        newDocContainer.firstChild.nextElementSibling,
                     );
                 } else {
                     newDocContainer.id = "clicked";
@@ -44,28 +43,28 @@ const pagingData = function (result, curr) {
             for (let j = 0; j < 1; j++) {
                 switch (result[i][j].task) {
                     case `1`:
-                        newDocContainer.innerText += `${result[i][j].company} | 경영 / 사무 / 영업 / 마케팅 / 금융 / 자재 / 기획 `;
+                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 경영 / 사무 / 영업 / 마케팅 / 금융 / 자재 / 기획 </span></div>`;
                         break;
                     case `2`:
-                        newDocContainer.innerText += `${result[i][j].company} | IT / 전산 / 네트워크 / 데이터베이스 `;
+                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | IT / 전산 / 네트워크 / 데이터베이스 </span></div>`;
                         break;
                     case `3`:
-                        newDocContainer.innerText += `${result[i][j].company} | 생산 / 제조 / 환경 / 플랜트 / 기계 설비 / 공정 / 설계 / 설비 / 품질 `;
+                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 생산 / 제조 / 환경 / 플랜트 / 기계 설비 / 공정 / 설계 / 설비 / 품질 </span></div>`;
                         break;
                     case `4`:
-                        newDocContainer.innerText += `${result[i][j].company} | 건설 / 건축 / 시공  `;
+                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 건설 / 건축 / 시공 </span> </div>`;
                         break;
                     case `5`:
-                        newDocContainer.innerText += `${result[i][j].company} | 유통 / 무역 `;
+                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 유통 / 무역 </span></div>`;
                         break;
                     case `6`:
-                        newDocContainer.innerText += `${result[i][j].company} | R&D `;
+                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | R&D </span></div>`;
                         break;
                     case `7`:
-                        newDocContainer.innerText += `${result[i][j].company} | 전기/전자(설계, 제어) `;
+                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 전기/전자(설계, 제어) </span></div>`;
                         break;
                     case `8`:
-                        newDocContainer.innerText += `${result[i][j].company} | 기타 `;
+                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 기타 </span></div>`;
                         break;
                     default:
                         break;
@@ -84,9 +83,9 @@ const pagingData = function (result, curr) {
                 e.stopPropagation();
                 if (newDocContainer.id === "clicked") {
                     newDocContainer.id = "";
-                    console.log(newDocContainer.firstChild.nextSibling);
+
                     newDocContainer.removeChild(
-                        newDocContainer.firstChild.nextSibling,
+                        newDocContainer.firstChild.nextElementSibling,
                     );
                 } else {
                     newDocContainer.id = "clicked";
@@ -104,28 +103,28 @@ const pagingData = function (result, curr) {
 
             switch (result[i].task) {
                 case `1`:
-                    newDocContainer.innerText += `${result[i].company} | 경영 / 사무 / 영업 / 마케팅 / 금융 / 자재 / 기획 `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span>| 경영 / 사무 / 영업 / 마케팅 / 금융 / 기획</span></div></div> `;
                     break;
                 case `2`:
-                    newDocContainer.innerText += `${result[i].company} | IT / 전산 / 네트워크 / 데이터베이스 `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | IT / 전산 / 네트워크 / 데이터베이스 </span></div></div>`;
                     break;
                 case `3`:
-                    newDocContainer.innerText += `${result[i].company} | 생산 / 제조 / 환경 / 플랜트 / 기계 설비 / 공정 / 설계 / 설비 / 품질 `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 생산 / 제조 / 플랜트 / 공정 / 설계 / 품질 </span></div></div>`;
                     break;
                 case `4`:
-                    newDocContainer.innerText += `${result[i].company} | 건설 / 건축 / 시공  `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 건설 / 건축 / 시공</span></div></div> `;
                     break;
                 case `5`:
-                    newDocContainer.innerText += `${result[i].company} | 유통 / 무역 `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 유통 / 무역</span></div></div> `;
                     break;
                 case `6`:
-                    newDocContainer.innerText += `${result[i].company} | R&D `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | R&D</span></div> </div>`;
                     break;
                 case `7`:
-                    newDocContainer.innerText += `${result[i].company} | 전기/전자(설계, 제어) `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 전기/전자(설계, 제어) </span></div></div>`;
                     break;
                 case `8`:
-                    newDocContainer.innerText += `${result[i].company} | 기타 `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 기타</span> </div></div>`;
                     break;
                 default:
                     break;
@@ -202,7 +201,7 @@ const dataHandler = function (result) {
     const column = document.createElement("div");
     column.innerText = "-회사명-               -직무-";
     resultContainer.appendChild(column);
-    resultContainer.innerHTML = "";
+    // resultContainer.innerHTML = "";
 
     paging(result);
     pagingData(result, 1);
@@ -215,36 +214,48 @@ const taskSearchHandler = async function (event) {
         task: taskSelect.value,
         // question: questionSelect.value,
     };
-    await fetch("http://localhost:4000/document/taskSearch", {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        redirect: "follow",
-        referrer: "no-referrer",
-        body: JSON.stringify(searchReq),
-    })
-        .then((res) => {
-            if (res.status === 404 || res.status === 400) {
-                console.log(res.status);
-            } else if (res.status === 200) {
-                return res.json();
-            }
+    if (searchReq.task === "") {
+        resultContainer.innerHTML = "검색 결과가 없습니다.";
+        const pages = document.querySelector(".paging-container");
+        if (pages) {
+            pages.innerHTML = "";
+            const blankContainer = document.querySelector(".blank-container");
+            blankContainer.style.display = "block";
+        }
+    } else {
+        await fetch("http://localhost:4000/document/taskSearch", {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(searchReq),
         })
-        .then((json) => {
-            resultArr = json.result;
+            .then((res) => {
+                if (res.status === 404 || res.status === 400) {
+                    console.log(res.status);
+                } else if (res.status === 200) {
+                    return res.json();
+                }
+            })
+            .then((json) => {
+                resultArr = json.result;
 
-            console.log(json.result[0][0].task);
-        })
-        .catch((error) => {
-            resultContainer.innerHTML = "검색 결과가 없습니다.";
-            console.log(error);
-        });
+                const blankContainer = document.querySelector(
+                    ".blank-container",
+                );
+                blankContainer.style.display = "none";
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
-    dataHandler(resultArr);
+        dataHandler(resultArr);
+    }
 };
 
 const questionSearchHandler = async function (event) {
@@ -252,38 +263,52 @@ const questionSearchHandler = async function (event) {
     const searchReq = {
         question: questionSelect.value,
     };
-    await fetch("http://localhost:4000/document/questionSearch", {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        redirect: "follow",
-        referrer: "no-referrer",
-        body: JSON.stringify(searchReq),
-    })
-        .then((res) => {
-            if (res.status === 404 || res.status === 400) {
-                console.log(res.status);
-            } else if (res.status === 200) {
-                return res.json();
-            }
+    if (searchReq.question === "") {
+        resultContainer.innerHTML = "검색 결과가 없습니다.";
+        const pages = document.querySelector(".paging-container");
+        if (pages) {
+            pages.innerHTML = "";
+            const blankContainer = document.querySelector(".blank-container");
+            blankContainer.style.display = "block";
+        }
+    } else {
+        await fetch("http://localhost:4000/document/questionSearch", {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(searchReq),
         })
-        .then((json) => {
-            const column = document.createElement("div");
-            column.innerText = "-회사명-               -직무-";
-            resultContainer.appendChild(column);
-            resultContainer.innerHTML = "";
+            .then((res) => {
+                if (res.status === 404 || res.status === 400) {
+                    console.log(res.status);
+                } else if (res.status === 200) {
+                    return res.json();
+                }
+            })
+            .then((json) => {
+                const column = document.createElement("div");
+                column.innerText = "-회사명-               -직무-";
+                resultContainer.appendChild(column);
+                resultContainer.innerHTML = "";
 
-            paging(json.result);
-            pagingData(json.result, 1);
-        })
+                paging(json.result);
+                pagingData(json.result, 1);
+                const blankContainer = document.querySelector(
+                    ".blank-container",
+                );
+                blankContainer.style.display = "none";
+            })
 
-        .catch((error) => {
-            console.log(error);
-        });
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 };
 
 const init = function () {

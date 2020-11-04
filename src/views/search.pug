@@ -1,11 +1,11 @@
 extends layout/layout.pug
 
 block content
-    section
+    section#search-section
         .inner
           .searchDoc-container
             .select-container
-              h3 Search
+                h3 Search
                 form#taskSearch-form(method='post')
                     select#task-select(name='task')
                         option(value='') 지원분야
@@ -33,9 +33,36 @@ block content
                         option(value='10') 기타경험
                         option(value='11') 기타(사회이슈, 자유기술, 특정문구, 아이디어 제시)
                     input#questionSearch-btn(type='submit', value='문항별 검색')
+            .partial
+                span#conpnay-name 기업명 
+                span#task-name 직무
             .search-result-container
                 .search-result#js-search-result
                     | 검색 결과가 없습니다.
             .paging-container
                 ul.pages
+            .blank-container
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                .blank .
+                
+                
                     

@@ -2,12 +2,20 @@
 @import "./responsive.css";
 
 /* common css */
+html,
+body {
+    /* height: 100%; */
+}
 .inner {
     width: 1300px;
     margin: auto;
     /* border: 1px solid red; */
 }
 .container {
+    /* min-height: 100%;
+    position: relative;
+
+    box-sizing: border-box; */
 }
 /* --common css */
 
@@ -169,6 +177,11 @@ section .section-container .join .to-login a {
 
 /* --main.pug */
 /* footer.pug */
+footer {
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
+}
 
 .footer-content {
     font-size: 14px;
@@ -497,11 +510,11 @@ section .section-container .join .to-login a {
 /* search.pug */
 
 .searchDoc-container {
-    padding-top: 10vh;
+    padding-top: 15vh;
     display: flex;
     flex-direction: column;
     justify-items: center;
-    height: 75vh;
+    /* height: 75vh; */
 }
 .searchDoc-container .select-container {
     border: 1px solid blueviolet;
@@ -509,8 +522,11 @@ section .section-container .join .to-login a {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    padding-bottom: 20px;
 }
 .searchDoc-container .select-container h3 {
+    margin: 20px;
 }
 .searchDoc-container .select-container form {
 }
@@ -545,6 +561,43 @@ section .section-container .join .to-login a {
     margin: 10px;
     padding: 5px;
     border: 1px solid red;
+}
+.new-document {
+    padding: 10px;
+}
+.new-document .document-desc {
+}
+.new-document .document-desc span {
+}
+.new-document .document-desc p {
+}
+.paging-container {
+    padding: 10px;
+}
+.paging-container a {
+    padding-left: 15px;
+}
+#search-section {
+}
+.blank-container {
+}
+.blank-container .blank {
+    color: transparent;
+}
+.partial {
+    border: 1px solid green;
+
+    display: flex;
+    justify-content: space-around;
+}
+.partial span {
+}
+#new-col {
+    text-align: left;
+    /* display: flex;
+    justify-content: space-between; */
+}
+#new-col span:nth-last-child(1) {
 }
 
 /* --search.pug */
@@ -623,4 +676,5 @@ section .section-container .join .to-login a {
     padding: 40px;
     box-sizing: border-box;
 }
+
 /* --analysis.pug */
