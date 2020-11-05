@@ -532,8 +532,11 @@ footer {
 }
 .searchDoc-container .select-container form select {
     margin: 0 10px;
-    width: 150px;
+    width: 200px;
     height: 30px;
+}
+.searchDoc-container .select-container #taskSearch-btn,
+.searchDoc-container .select-container #questionSearch-btn {
 }
 
 .searchDoc-container .search-result-container {
@@ -594,10 +597,32 @@ footer {
 }
 #new-col {
     text-align: left;
-    /* display: flex;
-    justify-content: space-between; */
+    display: flex;
+    justify-content: space-between;
 }
 #new-col span:nth-last-child(1) {
+}
+#company-col {
+    flex: 3;
+    border: 1px solid red;
+    text-align: left;
+}
+#task-col {
+    flex: 1;
+    border: 1px solid red;
+    text-align: left;
+}
+#company-num {
+    margin: 0;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid blueviolet;
+    width: 25px;
+    height: 100%;
+}
+#company-string {
+}
+#task-string {
 }
 
 /* --search.pug */

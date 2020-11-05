@@ -41,33 +41,37 @@ const pagingData = function (result, curr) {
             });
             if (!result[i]) break;
             for (let j = 0; j < 1; j++) {
-                switch (result[i][j].task) {
-                    case `1`:
-                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 경영 / 사무 / 영업 / 마케팅 / 금융 / 자재 / 기획 </span></div>`;
-                        break;
-                    case `2`:
-                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | IT / 전산 / 네트워크 / 데이터베이스 </span></div>`;
-                        break;
-                    case `3`:
-                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 생산 / 제조 / 환경 / 플랜트 / 기계 설비 / 공정 / 설계 / 설비 / 품질 </span></div>`;
-                        break;
-                    case `4`:
-                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 건설 / 건축 / 시공 </span> </div>`;
-                        break;
-                    case `5`:
-                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 유통 / 무역 </span></div>`;
-                        break;
-                    case `6`:
-                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | R&D </span></div>`;
-                        break;
-                    case `7`:
-                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 전기/전자(설계, 제어) </span></div>`;
-                        break;
-                    case `8`:
-                        newDocContainer.innerHTML += `<div id="new-col"><span>${result[i][j].company}</span> <span> | 기타 </span></div>`;
-                        break;
-                    default:
-                        break;
+                if (result[i][j].taskString === "-") {
+                    switch (result[i][j].task) {
+                        case `1`:
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i][j].company}</span></div> <div id="task-col"><span>| 경영 / 사무 / 영업 / 마케팅 </span></div></div> `;
+                            break;
+                        case `2`:
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i][j].company}</span></div> <div id="task-col"><span> | IT / 전산 / 네트워크 / DB </span></div></div>`;
+                            break;
+                        case `3`:
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i][j].company}</span></div> <div id="task-col"><span> | 생산 / 제조 / 플랜트 / 공정 </span></div></div>`;
+                            break;
+                        case `4`:
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i][j].company}</span></div> <div id="task-col"><span> | 건설 / 건축 / 시공</span></div></div> `;
+                            break;
+                        case `5`:
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i][j].company}</span></div> <div id="task-col"><span> | 유통 / 무역</span></div></div> `;
+                            break;
+                        case `6`:
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i][j].company}</span></div> <div id="task-col"><span> | R&D</span></div> </div>`;
+                            break;
+                        case `7`:
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i][j].company}</span></div> <div id="task-col"><span> | 전기/전자(설계, 제어) </span></div></div>`;
+                            break;
+                        case `8`:
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i][j].company}</span></div> <div id="task-col"><span> | 기타</span> </div></div>`;
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span id="task-string">| ${result[i][j].taskString}</span></div></div> `;
                 }
             }
             resultContainer.appendChild(newDocContainer);
@@ -100,34 +104,37 @@ const pagingData = function (result, curr) {
                 }
             });
             if (!result[i]) break;
-
-            switch (result[i].task) {
-                case `1`:
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span>| 경영 / 사무 / 영업 / 마케팅 / 금융 / 기획</span></div></div> `;
-                    break;
-                case `2`:
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | IT / 전산 / 네트워크 / 데이터베이스 </span></div></div>`;
-                    break;
-                case `3`:
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 생산 / 제조 / 플랜트 / 공정 / 설계 / 품질 </span></div></div>`;
-                    break;
-                case `4`:
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 건설 / 건축 / 시공</span></div></div> `;
-                    break;
-                case `5`:
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 유통 / 무역</span></div></div> `;
-                    break;
-                case `6`:
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | R&D</span></div> </div>`;
-                    break;
-                case `7`:
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 전기/전자(설계, 제어) </span></div></div>`;
-                    break;
-                case `8`:
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span>${result[i].company}</span></div> <div id="task-col"><span> | 기타</span> </div></div>`;
-                    break;
-                default:
-                    break;
+            if (result[i].taskString === "-") {
+                switch (result[i].task) {
+                    case `1`:
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i].company}</span></div> <div id="task-col"><span>| 경영 / 사무 / 영업 / 마케팅 </span></div></div> `;
+                        break;
+                    case `2`:
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i].company}</span></div> <div id="task-col"><span> | IT / 전산 / 네트워크 / DB </span></div></div>`;
+                        break;
+                    case `3`:
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i].company}</span></div> <div id="task-col"><span> | 생산 / 제조 / 플랜트 / 공정 </span></div></div>`;
+                        break;
+                    case `4`:
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i].company}</span></div> <div id="task-col"><span> | 건설 / 건축 / 시공</span></div></div> `;
+                        break;
+                    case `5`:
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i].company}</span></div> <div id="task-col"><span> | 유통 / 무역</span></div></div> `;
+                        break;
+                    case `6`:
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i].company}</span></div> <div id="task-col"><span> | R&D</span></div> </div>`;
+                        break;
+                    case `7`:
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i].company}</span></div> <div id="task-col"><span> | 전기/전자(설계, 제어) </span></div></div>`;
+                        break;
+                    case `8`:
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span> ${result[i].company}</span></div> <div id="task-col"><span> | 기타</span> </div></div>`;
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span id="task-string">| ${result[i].taskString}</span></div></div> `;
             }
 
             resultContainer.appendChild(newDocContainer);
@@ -150,6 +157,7 @@ const paging = function (result) {
         lastDiff = last - totalPage;
         last = totalPage;
     }
+
     if (totalPage < 5) pageCount = totalPage;
     let first = 0;
     if (lastDiff === 0) {

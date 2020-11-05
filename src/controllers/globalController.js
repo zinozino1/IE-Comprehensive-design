@@ -7,7 +7,6 @@ export const getMain = (req, res) => {
 };
 
 export const getHome = (req, res) => {
-    res.send(req.query);
     res.render("home");
     console.log(req.user);
 };
