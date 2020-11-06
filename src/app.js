@@ -14,6 +14,7 @@ import globalRouter from "./routers/globalRouter";
 import documentRouter from "./routers/documentRouter";
 import "./passport";
 import { localMiddleWare } from "./localMiddleWare";
+import userRouter from "./routers/userRouter";
 
 const { PythonShell } = require("python-shell");
 
@@ -43,6 +44,7 @@ app.use(passport.session());
 app.use(localMiddleWare);
 app.use("/", globalRouter);
 app.use("/document", documentRouter);
+app.use("/user", userRouter);
 // app.use("/mypage", )
 // app.get("/", function (req, res) {
 //     res.render("main"); // login data

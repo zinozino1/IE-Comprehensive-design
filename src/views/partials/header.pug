@@ -3,7 +3,7 @@ header
         #logo-container
             if loggedUser
                 a#logo(href='/') Clover
-                a#mypage(href="/mypage") MYPAGE
+                a#mypage(href=`/user/mypage/${loggedUser.id}`) MYPAGE
                 a#logout(href="/logout") LOGOUT
             else
                 a#logo(href='/') Clover

@@ -547,6 +547,7 @@ footer {
     background-color: transparent;
     border: 1px solid #ccc;
     transition: 0.2s;
+    cursor: pointer;
 }
 .searchDoc-container .select-container #taskSearch-btn:hover,
 .searchDoc-container .select-container #questionSearch-btn:hover {
@@ -555,7 +556,6 @@ footer {
 }
 
 .searchDoc-container .search-result-container {
-    border: 1px solid blueviolet;
     flex: 5;
     display: flex;
     justify-content: center;
@@ -567,7 +567,6 @@ footer {
 }
 
 .searchDoc-container .paging-container {
-    border: 1px solid blueviolet;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -589,17 +588,65 @@ footer {
     background-color: #f9f9f9;
     transition: 0.2s;
 }
+.new-document:hover #company-num {
+    background-color: #ffee55;
+    transition: 0.4s;
+}
 .new-document .document-desc {
 }
 .new-document .document-desc span {
 }
 .new-document .document-desc p {
 }
+.new-document #new-col {
+    cursor: pointer;
+}
+
+#newDoc-question,
+#newDoc-answer {
+    text-align: left;
+    border: 1px solid #898989;
+    margin-top: -1px;
+    padding: 20px;
+    background-color: #f6f7fa;
+}
+#newDoc-question {
+}
+#newDoc-answer {
+}
+#newDoc-question #newDoc-question-string,
+#newDoc-answer #newDoc-task-string {
+    display: block;
+    font-size: 24px;
+    border: 1px solid #898989;
+    border-radius: 2px;
+    margin-bottom: 15px;
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+}
+#newDoc-question #newDoc-question-desc,
+#newDoc-answer #newDoc-answer-desc {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: #898989 1px 1px 1px;
+}
+
 .paging-container {
     padding: 10px;
 }
 .paging-container a {
-    padding-left: 15px;
+    display: inline-block;
+    border: 1px solid #898989;
+    text-align: center;
+    /* margin-left: 10px;
+    padding: 5px 10px; */
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 #search-section {
 }

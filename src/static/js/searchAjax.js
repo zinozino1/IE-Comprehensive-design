@@ -17,7 +17,7 @@ const pagingData = function (result, curr) {
         for (let i = curr * 10 - 9; i <= curr * 10; i++) {
             const newDocContainer = document.createElement("div");
             newDocContainer.className = "new-document";
-            newDocContainer.style.border = "1px solid black";
+
             newDocContainer.addEventListener("click", function (e) {
                 if (newDocContainer.id === "clicked") {
                     newDocContainer.id = "";
@@ -29,12 +29,12 @@ const pagingData = function (result, curr) {
                     newDocContainer.id = "clicked";
                     const newDocDesc = document.createElement("div");
                     newDocDesc.className = "document-desc";
-                    newDocDesc.style.border = "1px solid red";
+
                     newDocDesc.addEventListener("click", function (event) {
                         event.stopPropagation();
                     });
                     for (let j = 0; j < result[i].length; j++) {
-                        newDocDesc.innerHTML += `<span>문항 : ${result[i][j].questionString}</span><p>답변 : ${result[i][j].answer}</p>`;
+                        newDocDesc.innerHTML += `<div id="newDoc-question"><div><span id="newDoc-question-string">문항</span>  <p id="newDoc-question-desc">${result[i][j].questionString}</p></div></div><div id="newDoc-answer"><div><span id="newDoc-task-string">답변</span> <p id="newDoc-answer-desc">${result[i][j].answer}</p></div></div>`;
                     }
                     newDocContainer.appendChild(newDocDesc);
                 }
@@ -95,11 +95,11 @@ const pagingData = function (result, curr) {
                     newDocContainer.id = "clicked";
                     const newDocDesc = document.createElement("div");
                     newDocDesc.className = "document-desc";
-                    newDocDesc.style.border = "1px solid red";
+
                     newDocDesc.addEventListener("click", function (event) {
                         event.stopPropagation();
                     });
-                    newDocDesc.innerHTML += `<span>문항 : ${result[i].questionString}</span><p>답변 : ${result[i].answer}</p>`;
+                    newDocDesc.innerHTML += `<div id="newDoc-question"><div><span id="newDoc-question-string">문항</span>  <p id="newDoc-question-desc">${result[i].questionString}</p></div></div><div id="newDoc-answer"><div><span id="newDoc-task-string">답변</span> <p id="newDoc-answer-desc">${result[i].answer}</p></div></div>`;
                     newDocContainer.appendChild(newDocDesc);
                 }
             });
@@ -189,6 +189,15 @@ const paging = function (result) {
 
     pageContainer.innerHTML = html;
     const pages = document.querySelectorAll(".paging-container a");
+    const currentPageNum = document.querySelector(
+        `#${CSS.escape(currentPage)}`,
+    );
+    currentPageNum.style.background = "#555";
+    currentPageNum.style.border = "1px solid black";
+    currentPageNum.style.fontWeight = "600";
+    currentPageNum.style.color = "#fff";
+
+    console.log(currentPageNum);
     for (let i = 0; i < pages.length; i++) {
         pages[i].addEventListener("click", function (e) {
             if (pages[i].id === "prev") {
