@@ -30,6 +30,10 @@ const routes = {
     googleCallback: "/auth/google/callback",
     kakao: "/auth/kakao",
     kakaoCallback: "/auth/kakao/callback",
+
+    // api
+    searchUser: "/searchUser",
+    saveUser: "/saveUser",
 };
 
 export default routes;

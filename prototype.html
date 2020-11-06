@@ -7,17 +7,24 @@
         <title>Prototype</title>
     </head>
     <body>
-        <section>
-            <div class="inner">
-                <div class="docSelect-container">
-                    <div class="new-doc">
-                        <a href="#">새로 작성하기</a>
-                    </div>
-                    <div class="exist-doc">
-                        <a href="#">내 자소서 불러오기</a>
-                    </div>
+        <div id="profile-edit-container">
+            <form id="profile-form">
+                <div id="user-email-container">
+                    <label for="user-email">email</label
+                    ><input type="text" id="user-email" value="${email}" />
                 </div>
-            </div>
-        </section>
+                <div id="user-nickName-container">
+                    <label for="user-nickName">ninkname</label
+                    ><input
+                        type="text"
+                        id="user-nickName"
+                        value="${nickName}"
+                    />
+                </div>
+                <div>
+                    <button id="profile-saveBtn">Save</button>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

@@ -438,17 +438,22 @@ footer {
 }
 .mypage-container .mypage-list ul li {
 }
-.mypage-container .mypage-list ul li a {
-    /* color: #fff; */
-}
-.mypage-container .mypage-list ul li a div {
+
+.mypage-container .mypage-list ul li div {
     margin: 25px 0;
 
     /* box-shadow: 0 7px 15px rgba(0, 0, 0, 0.562);
     border-radius: 0 10px; */
     padding: 5px;
+    cursor: pointer;
 }
-.mypage-container .mypage-list ul li a div:hover {
+.mypage-container .mypage-list #profile-edit {
+}
+.mypage-container .mypage-list #resume-scrap {
+}
+.mypage-container .mypage-list #my-resume {
+}
+.mypage-container .mypage-list ul li div:hover {
     color: #3681d6;
 }
 
