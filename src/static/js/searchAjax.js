@@ -318,13 +318,31 @@ const questionSearchHandler = async function (event) {
             });
     }
 };
+const btnDesignClosure = function (type) {
+    const toggle = type;
+    return function (e) {
+        if (toggle === "task") {
+            taskSearchBtn.style.background = "#ffee55";
+            questionSearchBtn.style.background = "transparent";
+        } else {
+            questionSearchBtn.style.background = "#ffee55";
+            taskSearchBtn.style.background = "transparent";
+        }
+    };
+};
+
+const btnDesignHandler = function (e) {
+    console.log(1);
+};
 
 const init = function () {
     taskSearchBtn.addEventListener("click", taskSearchHandler);
+    taskSearchBtn.addEventListener("click", btnDesignClosure("task"));
     taskSearchForm.addEventListener("submit", function (event) {
         event.preventDefault();
     });
     questionSearchBtn.addEventListener("click", questionSearchHandler);
+    questionSearchBtn.addEventListener("click", btnDesignClosure("question"));
     questionSearchForm.addEventListener("submit", function (event) {
         event.preventDefault();
     });

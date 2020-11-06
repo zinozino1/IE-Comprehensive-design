@@ -526,6 +526,7 @@ footer {
     padding-bottom: 20px;
 }
 .searchDoc-container .select-container h3 {
+    border-bottom: 1px solid #ddd;
     margin: 20px;
 }
 .searchDoc-container .select-container form {
@@ -534,9 +535,24 @@ footer {
     margin: 0 10px;
     width: 200px;
     height: 30px;
+    margin: 3px;
+    border: 1px solid #ccc;
+    outline: 0;
+    background-color: transparent;
 }
 .searchDoc-container .select-container #taskSearch-btn,
 .searchDoc-container .select-container #questionSearch-btn {
+    width: 150px;
+    height: 30px;
+    margin: 3px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+}
+.searchDoc-container .select-container #taskSearch-btn:hover,
+.searchDoc-container .select-container #questionSearch-btn:hover {
+    background-color: #ffee55;
+    transition: 0.2s;
 }
 
 .searchDoc-container .search-result-container {
