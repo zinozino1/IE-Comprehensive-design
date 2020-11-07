@@ -68,7 +68,22 @@ export const postQuestionSearch = async (req, res) => {
 
 export const postKeywordSearch = async (req, res) => {
     console.log(req.body);
-    res.end();
+    const {
+        body: { keyword },
+    } = req;
+    try {
+        const documents = await documentModel.find({
+            answer: { $regex: `${keyword}` },
+        });
+
+        console.log(documents[0]);
+        res.send({ result: documents });
+    } catch (error) {
+        console.log(error);
+        res.status(400);
+    } finally {
+        res.end();
+    }
 };
 
 export const getSelect = (req, res) => {

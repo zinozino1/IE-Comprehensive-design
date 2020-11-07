@@ -12,12 +12,25 @@ const keywordSearchInput = document.querySelector("#keywordSearch-input");
 const resultContainer = document.querySelector("#js-search-result");
 
 let currentPage = 1;
+let currentKeyword = "";
+let searchMode = "";
+
+const paintingKeyword = function (keyword, element) {
+    //const paintingTarget = document.querySelector("#newDoc-answer-desc");
+
+    let wholeString = element.innerHTML;
+    wholeString = wholeString.replace(
+        keyword,
+        `<span style="background : #ff874b">${keyword}</span>`,
+    );
+    element.innerHTML = wholeString;
+};
 
 const pagingData = function (result, curr) {
     if (result[0].length) {
         console.log("직무별 검색");
         resultContainer.innerHTML = "";
-        for (let i = curr * 10 - 9; i <= curr * 10; i++) {
+        for (let i = curr * 10 - 10; i <= curr * 10; i++) {
             const newDocContainer = document.createElement("div");
             newDocContainer.className = "new-document";
 
@@ -47,34 +60,72 @@ const pagingData = function (result, curr) {
                 if (result[i][j].taskString === "-") {
                     switch (result[i][j].task) {
                         case `1`:
-                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span>| 경영 / 사무 / 영업 / 마케팅 </span></div></div> `;
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                                i + 1
+                            }</span><span id="company-string"> ${
+                                result[i][j].company
+                            }</span></div> <div id="task-col"><span>| 경영 / 사무 / 영업 / 마케팅 </span></div></div> `;
                             break;
                         case `2`:
-                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span> | IT / 전산 / 네트워크 / DB </span></div></div>`;
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                                i + 1
+                            }</span><span id="company-string"> ${
+                                result[i][j].company
+                            }</span></div> <div id="task-col"><span> | IT / 전산 / 네트워크 / DB </span></div></div>`;
                             break;
                         case `3`:
-                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span> | 생산 / 제조 / 플랜트 / 공정 </span></div></div>`;
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                                i + 1
+                            }</span><span id="company-string"> ${
+                                result[i][j].company
+                            }</span></div> <div id="task-col"><span> | 생산 / 제조 / 플랜트 / 공정 </span></div></div>`;
                             break;
                         case `4`:
-                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span> | 건설 / 건축 / 시공</span></div></div> `;
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                                i + 1
+                            }</span><span id="company-string"> ${
+                                result[i][j].company
+                            }</span></div> <div id="task-col"><span> | 건설 / 건축 / 시공</span></div></div> `;
                             break;
                         case `5`:
-                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span> | 유통 / 무역</span></div></div> `;
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                                i + 1
+                            }</span><span id="company-string"> ${
+                                result[i][j].company
+                            }</span></div> <div id="task-col"><span> | 유통 / 무역</span></div></div> `;
                             break;
                         case `6`:
-                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span> | R&D</span></div> </div>`;
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                                i + 1
+                            }</span><span id="company-string"> ${
+                                result[i][j].company
+                            }</span></div> <div id="task-col"><span> | R&D</span></div> </div>`;
                             break;
                         case `7`:
-                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span> | 전기/전자(설계, 제어) </span></div></div>`;
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                                i + 1
+                            }</span><span id="company-string"> ${
+                                result[i][j].company
+                            }</span></div> <div id="task-col"><span> | 전기/전자(설계, 제어) </span></div></div>`;
                             break;
                         case `8`:
-                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span> | 기타</span> </div></div>`;
+                            newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                                i + 1
+                            }</span><span id="company-string"> ${
+                                result[i][j].company
+                            }</span></div> <div id="task-col"><span> | 기타</span> </div></div>`;
                             break;
                         default:
                             break;
                     }
                 } else {
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i][j].company}</span></div> <div id="task-col"><span id="task-string">| ${result[i][j].taskString}</span></div></div> `;
+                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                        i + 1
+                    }</span><span id="company-string"> ${
+                        result[i][j].company
+                    }</span></div> <div id="task-col"><span id="task-string">| ${
+                        result[i][j].taskString
+                    }</span></div></div> `;
                 }
             }
             resultContainer.appendChild(newDocContainer);
@@ -82,7 +133,7 @@ const pagingData = function (result, curr) {
     } else {
         console.log("문항별 검색");
         resultContainer.innerHTML = "";
-        for (let i = curr * 10 - 9; i <= curr * 10; i++) {
+        for (let i = curr * 10 - 10; i <= curr * 10; i++) {
             const newDocContainer = document.createElement("div");
             newDocContainer.className = "new-document";
 
@@ -104,40 +155,81 @@ const pagingData = function (result, curr) {
                     });
                     newDocDesc.innerHTML += `<div id="newDoc-question"><div><span id="newDoc-question-string">문항</span>  <p id="newDoc-question-desc">${result[i].questionString}</p></div></div><div id="newDoc-answer"><div><span id="newDoc-task-string">답변</span> <p id="newDoc-answer-desc">${result[i].answer}</p></div></div>`;
                     newDocContainer.appendChild(newDocDesc);
+                    if (searchMode === "keyword") {
+                        paintingKeyword(currentKeyword, newDocDesc);
+                    }
                 }
             });
             if (!result[i]) break;
             if (result[i].taskString === "-") {
                 switch (result[i].task) {
                     case `1`:
-                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span>| 경영 / 사무 / 영업 / 마케팅 </span></div></div> `;
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                            i + 1
+                        }</span><span id="company-string"> ${
+                            result[i].company
+                        }</span></div> <div id="task-col"><span>| 경영 / 사무 / 영업 / 마케팅 </span></div></div> `;
                         break;
                     case `2`:
-                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span> | IT / 전산 / 네트워크 / DB </span></div></div>`;
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                            i + 1
+                        }</span><span id="company-string"> ${
+                            result[i].company
+                        }</span></div> <div id="task-col"><span> | IT / 전산 / 네트워크 / DB </span></div></div>`;
                         break;
                     case `3`:
-                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span> | 생산 / 제조 / 플랜트 / 공정 </span></div></div>`;
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                            i + 1
+                        }</span><span id="company-string"> ${
+                            result[i].company
+                        }</span></div> <div id="task-col"><span> | 생산 / 제조 / 플랜트 / 공정 </span></div></div>`;
                         break;
                     case `4`:
-                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span> | 건설 / 건축 / 시공</span></div></div> `;
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                            i + 1
+                        }</span><span id="company-string"> ${
+                            result[i].company
+                        }</span></div> <div id="task-col"><span> | 건설 / 건축 / 시공</span></div></div> `;
                         break;
                     case `5`:
-                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span> | 유통 / 무역</span></div></div> `;
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                            i + 1
+                        }</span><span id="company-string"> ${
+                            result[i].company
+                        }</span></div> <div id="task-col"><span> | 유통 / 무역</span></div></div> `;
                         break;
                     case `6`:
-                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span> | R&D</span></div> </div>`;
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                            i + 1
+                        }</span><span id="company-string"> ${
+                            result[i].company
+                        }</span></div> <div id="task-col"><span> | R&D</span></div> </div>`;
                         break;
                     case `7`:
-                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span> | 전기/전자(설계, 제어) </span></div></div>`;
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                            i + 1
+                        }</span><span id="company-string"> ${
+                            result[i].company
+                        }</span></div> <div id="task-col"><span> | 전기/전자(설계, 제어) </span></div></div>`;
                         break;
                     case `8`:
-                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span> | 기타</span> </div></div>`;
+                        newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                            i + 1
+                        }</span><span id="company-string"> ${
+                            result[i].company
+                        }</span></div> <div id="task-col"><span> | 기타</span> </div></div>`;
                         break;
                     default:
                         break;
                 }
             } else {
-                newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${i}</span><span id="company-string"> ${result[i].company}</span></div> <div id="task-col"><span id="task-string">| ${result[i].taskString}</span></div></div> `;
+                newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                    i + 1
+                }</span><span id="company-string"> ${
+                    result[i].company
+                }</span></div> <div id="task-col"><span id="task-string">| ${
+                    result[i].taskString
+                }</span></div></div> `;
             }
 
             resultContainer.appendChild(newDocContainer);
@@ -233,6 +325,7 @@ const noneOfSearch = function () {
 };
 
 const taskSearchHandler = async function (event) {
+    searchMode = "task";
     currentPage = 1;
     let resultArr = [];
     const searchReq = {
@@ -263,11 +356,6 @@ const taskSearchHandler = async function (event) {
             })
             .then((json) => {
                 resultArr = json.result;
-
-                const blankContainer = document.querySelector(
-                    ".blank-container",
-                );
-                blankContainer.style.display = "none";
             })
             .catch((error) => {
                 console.log(error);
@@ -278,6 +366,7 @@ const taskSearchHandler = async function (event) {
 };
 
 const questionSearchHandler = async function (event) {
+    searchMode = "question";
     currentPage = 1;
     const searchReq = {
         question: questionSelect.value,
@@ -309,10 +398,6 @@ const questionSearchHandler = async function (event) {
 
                 paging(json.result);
                 pagingData(json.result, 1);
-                const blankContainer = document.querySelector(
-                    ".blank-container",
-                );
-                blankContainer.style.display = "none";
             })
 
             .catch((error) => {
@@ -322,13 +407,16 @@ const questionSearchHandler = async function (event) {
 };
 
 const keywordSearchHandler = async function () {
+    searchMode = "keyword";
+    currentPage = 1;
     const searchReq = {
         keyword: keywordSearchInput.value,
     };
+    currentKeyword = searchReq.keyword;
     if (searchReq.keyword === "") {
         noneOfSearch();
     } else {
-        await fetch("http://localhost:4000/document/questionSearch", {
+        await fetch("http://localhost:4000/document/keywordSearch", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
@@ -348,15 +436,13 @@ const keywordSearchHandler = async function () {
                 }
             })
             .then((json) => {
-                console.log(json);
-                // resultContainer.innerHTML = "";
-
-                // paging(json.result);
-                // pagingData(json.result, 1);
-                // const blankContainer = document.querySelector(
-                //     ".blank-container",
-                // );
-                // blankContainer.style.display = "none";
+                if (json.result.length === 0) {
+                    noneOfSearch();
+                } else {
+                    resultContainer.innerHTML = "";
+                    paging(json.result);
+                    pagingData(json.result, 1);
+                }
             })
 
             .catch((error) => {
