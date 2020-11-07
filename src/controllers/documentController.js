@@ -66,6 +66,11 @@ export const postQuestionSearch = async (req, res) => {
     }
 };
 
+export const postKeywordSearch = async (req, res) => {
+    console.log(req.body);
+    res.end();
+};
+
 export const getSelect = (req, res) => {
     res.render("select");
 };

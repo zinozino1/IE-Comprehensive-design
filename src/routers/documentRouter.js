@@ -12,6 +12,7 @@ import {
     postAnalysis,
     postTaskSearch,
     postQuestionSearch,
+    postKeywordSearch,
 } from "../controllers/documentController";
 
 const documentRouter = express.Router();
@@ -25,6 +26,7 @@ documentRouter.post(routes.add, postAdd);
 documentRouter.get(routes.search, getSearch);
 documentRouter.post(routes.taskSearch, postTaskSearch);
 documentRouter.post(routes.questionSearch, postQuestionSearch);
+documentRouter.post(routes.keywordSearch, postKeywordSearch);
 
 documentRouter.get(routes.select, getSelect);
 documentRouter.post(routes.select, postSelect);

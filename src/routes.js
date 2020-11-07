@@ -19,6 +19,7 @@ const routes = {
     search: "/search",
     taskSearch: "/taskSearch",
     questionSearch: "/questionSearch",
+    keywordSearch: "/keywordSearch",
     select: "/select",
     analysis: (id) => {
         if (id) return `/${id}/analysis`;

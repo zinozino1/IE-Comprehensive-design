@@ -6,6 +6,9 @@ const questionSearchBtn = document.querySelector("#questionSearch-btn");
 const questionSelect = document.querySelector("#question-select");
 const questionSearchForm = document.querySelector("#questionSearch-form");
 
+const keywordSearchBtn = document.querySelector("#keywordSearch-btn");
+const keywordSearchInput = document.querySelector("#keywordSearch-input");
+
 const resultContainer = document.querySelector("#js-search-result");
 
 let currentPage = 1;
@@ -219,6 +222,16 @@ const dataHandler = function (result) {
     pagingData(result, 1);
 };
 
+const noneOfSearch = function () {
+    resultContainer.innerHTML = "검색 결과가 없습니다.";
+    const pages = document.querySelector(".paging-container");
+    if (pages) {
+        pages.innerHTML = "";
+        const blankContainer = document.querySelector(".blank-container");
+        blankContainer.style.display = "block";
+    }
+};
+
 const taskSearchHandler = async function (event) {
     currentPage = 1;
     let resultArr = [];
@@ -227,13 +240,7 @@ const taskSearchHandler = async function (event) {
         // question: questionSelect.value,
     };
     if (searchReq.task === "") {
-        resultContainer.innerHTML = "검색 결과가 없습니다.";
-        const pages = document.querySelector(".paging-container");
-        if (pages) {
-            pages.innerHTML = "";
-            const blankContainer = document.querySelector(".blank-container");
-            blankContainer.style.display = "block";
-        }
+        noneOfSearch();
     } else {
         await fetch("http://localhost:4000/document/taskSearch", {
             method: "POST",
@@ -276,13 +283,7 @@ const questionSearchHandler = async function (event) {
         question: questionSelect.value,
     };
     if (searchReq.question === "") {
-        resultContainer.innerHTML = "검색 결과가 없습니다.";
-        const pages = document.querySelector(".paging-container");
-        if (pages) {
-            pages.innerHTML = "";
-            const blankContainer = document.querySelector(".blank-container");
-            blankContainer.style.display = "block";
-        }
+        noneOfSearch();
     } else {
         await fetch("http://localhost:4000/document/questionSearch", {
             method: "POST",
@@ -319,21 +320,68 @@ const questionSearchHandler = async function (event) {
             });
     }
 };
+
+const keywordSearchHandler = async function () {
+    const searchReq = {
+        keyword: keywordSearchInput.value,
+    };
+    if (searchReq.keyword === "") {
+        noneOfSearch();
+    } else {
+        await fetch("http://localhost:4000/document/questionSearch", {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(searchReq),
+        })
+            .then((res) => {
+                if (res.status === 404 || res.status === 400) {
+                    console.log(res.status);
+                } else if (res.status === 200) {
+                    return res.json();
+                }
+            })
+            .then((json) => {
+                console.log(json);
+                // resultContainer.innerHTML = "";
+
+                // paging(json.result);
+                // pagingData(json.result, 1);
+                // const blankContainer = document.querySelector(
+                //     ".blank-container",
+                // );
+                // blankContainer.style.display = "none";
+            })
+
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+};
+
 const btnDesignClosure = function (type) {
     const toggle = type;
     return function (e) {
         if (toggle === "task") {
             taskSearchBtn.style.background = "#ffee55";
             questionSearchBtn.style.background = "white";
-        } else {
+            keywordSearchBtn.style.background = "white";
+        } else if (toggle === "question") {
             questionSearchBtn.style.background = "#ffee55";
             taskSearchBtn.style.background = "white";
+            keywordSearchBtn.style.background = "white";
+        } else {
+            questionSearchBtn.style.background = "white";
+            taskSearchBtn.style.background = "white";
+            keywordSearchBtn.style.background = "#ffee55";
         }
     };
-};
-
-const btnDesignHandler = function (e) {
-    console.log(1);
 };
 
 const init = function () {
@@ -347,6 +395,8 @@ const init = function () {
     questionSearchForm.addEventListener("submit", function (event) {
         event.preventDefault();
     });
+    keywordSearchBtn.addEventListener("click", keywordSearchHandler);
+    keywordSearchBtn.addEventListener("click", btnDesignClosure("keyword"));
 };
 
 if (taskSearchForm) init();
