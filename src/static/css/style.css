@@ -427,7 +427,7 @@ footer {
 /* mypage.pug */
 
 .mypage-container {
-    border: 1px solid black;
+    border: 1px solid #d8d1d1;
     padding-top: 10vh;
     height: 100vh;
     display: flex;
@@ -436,7 +436,9 @@ footer {
     box-sizing: border-box;
     padding: 25px;
     flex: 1;
-    border: solid 1px #333;
+    border: 1px solid #d8d1d1;
+    border-left: none;
+
     /* background-color: #242a2f; */
 }
 .mypage-container .mypage-list ul {
@@ -465,7 +467,64 @@ footer {
 .mypage-container .mypage-articles {
     box-sizing: border-box;
     flex: 5;
-    border: solid 1px #333;
+    background-color: #f8fafc;
+    display: flex;
+    justify-content: center;
+}
+
+#profile-edit-container {
+    margin-top: 15vh;
+    border: 1px solid #d8d1d1;
+    border-radius: 20px;
+    height: 40vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 800px;
+}
+#profile-edit-container #user-email-container,
+#profile-edit-container #user-nickName-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+#profile-edit-container #user-email-container div,
+#profile-edit-container #user-nickName-container div {
+    width: 270px;
+    font-weight: bold;
+    margin: 4px;
+    box-sizing: border-box;
+}
+#profile-edit-container #user-email-container #user-email {
+}
+
+#profile-edit-container #user-email-container #user-nickName {
+}
+
+#profile-saveBtn-container {
+    margin-top: 30px;
+    text-align: center;
+}
+#profile-saveBtn-container #profile-saveBtn {
+    color: #fff;
+    background-color: #1369ea;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+}
+#user-email,
+#user-nickName {
+    width: 270px;
+    height: 35px;
+
+    padding-left: 2px;
+    border: 1px solid #d8d1d1;
+    border-radius: 7px;
 }
 
 /* --mypage.pug */
@@ -625,6 +684,7 @@ footer {
     padding: 10px;
     border-bottom: 1px solid #898989;
     transition: 0.2s;
+    /* display: flex; */
 }
 .new-document:hover {
     background-color: #f9f9f9;
@@ -675,6 +735,16 @@ footer {
     border-radius: 10px;
     box-shadow: #898989 1px 1px 1px;
 }
+#scrap-btn {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #d8d1d1;
+    font-weight: 300;
+}
+#scrap-btn:hover {
+    border: 1px solid #898989;
+}
 
 .paging-container {
     padding: 10px;
@@ -716,11 +786,14 @@ footer {
     box-sizing: border-box;
 }
 .partial #company-name {
-    flex: 3;
+    flex: 11;
     padding-left: 100px;
 }
 .partial #task-name {
     padding-left: 150px;
+    flex: 3;
+}
+.partial #scrap-name {
     flex: 1;
 }
 

@@ -1,5 +1,7 @@
 const profileEditBtn = document.querySelector("#profile-edit");
 const targetContainer = document.querySelector(".mypage-articles");
+let curreuntUserEmail = "";
+let currentUserNickName = "";
 
 const saveUser = function () {
     const saveProfileForm = document.querySelector("#profile-form");
@@ -8,7 +10,6 @@ const saveUser = function () {
     const inputNickName = document.querySelector("#user-nickName");
 
     saveBtn.addEventListener("click", async (e) => {
-        console.log(1111);
         await fetch("http://localhost:4000/api/saveUser", {
             method: "POST",
             mode: "cors",
@@ -26,6 +27,10 @@ const saveUser = function () {
         })
             .then((res) => {
                 console.log(res.status);
+                e.target.innerText = "저장완료!";
+                e.target.style.background = "#fae206";
+                e.target.style.color = "#f8fafc";
+                e.target.style.transition = "0.2s";
             })
 
             .catch((error) => {
@@ -38,12 +43,15 @@ const paintEditContainer = function (email, nickName) {
     targetContainer.innerHTML = `<div id="profile-edit-container">
     <form id="profile-form">
         <div id="user-email-container">
-            <label for="user-email">email</label
-            ><input type="text" id="user-email" value="${email}" />
+        <div>
+            <label for="user-email">email</label>
+        </div>
+            <input type="text" id="user-email" value="${email}" />
         </div>
         <div id="user-nickName-container">
-            <label for="user-nickName">ninkname</label
-            ><input
+        <div>
+            <label for="user-nickName">닉네임</label>
+        </div><input
                 type="text"
                 id="user-nickName"
                 value="${nickName}"
@@ -51,8 +59,8 @@ const paintEditContainer = function (email, nickName) {
         </div>
         
     </form>
-    <div>
-            <button id="profile-saveBtn">Save</button>
+    <div id="profile-saveBtn-container">
+            <button id="profile-saveBtn">저장</button>
     </div>
 </div>`;
 };
@@ -83,6 +91,8 @@ const getCurrentUser = async function () {
             const {
                 user: { email, nickName },
             } = json;
+            curreuntUserEmail = email;
+            currentUserNickName = nickName;
             paintEditContainer(email, nickName);
             saveUser();
         })
@@ -97,6 +107,8 @@ const btnHandler = function () {
 
 const init = function () {
     profileEditBtn.addEventListener("click", btnHandler);
+    getCurrentUser();
+    paintEditContainer(curreuntUserEmail, currentUserNickName);
 };
 
 if (profileEditBtn) init();

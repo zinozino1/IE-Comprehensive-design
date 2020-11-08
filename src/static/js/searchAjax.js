@@ -27,6 +27,13 @@ const paintingKeyword = function (keyword, element) {
     element.innerHTML = wholeString;
 };
 
+const scrapHandler = function (e) {
+    e.stopPropagation();
+    console.log(this);
+    // key값 필요. 엑셀 데이터에 key값 넣어서
+    // html로 가져온 후 그 key값 display:none시켜야함
+};
+
 const pagingData = function (result, curr) {
     if (result[0].length) {
         console.log("직무별 검색");
@@ -127,10 +134,20 @@ const pagingData = function (result, curr) {
                     }</span></div> <div id="task-col"><span id="task-string">| ${
                         result[i][j].taskString
                     }</span></div></div> `;
+                    // <button id="scrap-btn"><i class="far fa-file-alt"></i></button>
                 }
             }
+
             resultContainer.appendChild(newDocContainer);
         }
+        const newCol = document.querySelectorAll("#new-col");
+        newCol.forEach(function (v) {
+            const scrapBtn = document.createElement("button");
+            scrapBtn.id = "scrap-btn";
+            scrapBtn.innerHTML = `<i class="far fa-file-alt"></i>`;
+            scrapBtn.addEventListener("click", scrapHandler);
+            v.appendChild(scrapBtn);
+        });
     } else {
         console.log("문항별 검색");
         resultContainer.innerHTML = "";
@@ -235,6 +252,14 @@ const pagingData = function (result, curr) {
 
             resultContainer.appendChild(newDocContainer);
         }
+        const newCol = document.querySelectorAll("#new-col");
+        newCol.forEach(function (v) {
+            const scrapBtn = document.createElement("button");
+            scrapBtn.id = "scrap-btn";
+            scrapBtn.innerHTML = `<i class="far fa-file-alt"></i>`;
+            scrapBtn.addEventListener("click", scrapHandler);
+            v.appendChild(scrapBtn);
+        });
     }
 };
 
