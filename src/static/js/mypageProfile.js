@@ -9,7 +9,7 @@ const saveUser = function () {
 
     saveBtn.addEventListener("click", async (e) => {
         console.log(1111);
-        await fetch("http://localhost:4000/api/searchUser", {
+        await fetch("http://localhost:4000/api/saveUser", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",

@@ -17,10 +17,11 @@ let searchMode = "";
 
 const paintingKeyword = function (keyword, element) {
     //const paintingTarget = document.querySelector("#newDoc-answer-desc");
+    let regex = new RegExp(keyword, "g");
 
     let wholeString = element.innerHTML;
     wholeString = wholeString.replace(
-        keyword,
+        regex,
         `<span style="background : #ff874b">${keyword}</span>`,
     );
     element.innerHTML = wholeString;
