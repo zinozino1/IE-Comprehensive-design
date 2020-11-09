@@ -35,6 +35,7 @@ const routes = {
     // api
     searchUser: "/searchUser",
     saveUser: "/saveUser",
+    scrapDocument: "/scrapDocument",
 };
 
 export default routes;

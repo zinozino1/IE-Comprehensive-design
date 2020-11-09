@@ -1,5 +1,6 @@
 import userModel from "../models/user";
 import routes from "../routes";
+import documentModel from "../models/document";
 
 export const saveUser = async (req, res) => {
     console.log(req.body);
@@ -8,8 +9,6 @@ export const saveUser = async (req, res) => {
         user: { id },
     } = req;
     try {
-        // 여기서부터 하면 댐 11.7
-        console.log(1);
         const user = await userModel.findOneAndUpdate(
             { _id: id },
             { email, nickName },
@@ -30,6 +29,32 @@ export const searchUser = async (req, res) => {
     try {
         const user = await userModel.findById(userId);
         res.send({ user });
+    } catch (error) {
+        console.log(error);
+    } finally {
+        res.end();
+    }
+};
+
+export const scrapDocument = async (req, res) => {
+    console.log(req.body);
+    const {
+        body: { key },
+        user: { id },
+    } = req;
+    try {
+        const document = await documentModel.findOne({ key });
+        const currentUser = await userModel.findById(id);
+        const func = function (v) {
+            if (v.key === key) {
+                return true;
+            }
+        };
+
+        if (!currentUser.scrap.some(func)) {
+            currentUser.scrap.push(document);
+            currentUser.save();
+        }
     } catch (error) {
         console.log(error);
     } finally {

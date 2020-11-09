@@ -27,11 +27,30 @@ const paintingKeyword = function (keyword, element) {
     element.innerHTML = wholeString;
 };
 
-const scrapHandler = function (e) {
+const scrapHandler = async function (e) {
     e.stopPropagation();
-    console.log(this);
-    // key값 필요. 엑셀 데이터에 key값 넣어서
-    // html로 가져온 후 그 key값 display:none시켜야함
+    const key = this.parentNode.parentNode.firstChild.innerHTML;
+
+    await fetch("http://localhost:4000/api/scrapDocument", {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrer: "no-referrer",
+        body: JSON.stringify({ key }),
+    })
+        .then((res) => {
+            if (res.status === 404 || res.status === 400) {
+                console.log(res.status);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 };
 
 const pagingData = function (result, curr) {
@@ -127,7 +146,10 @@ const pagingData = function (result, curr) {
                             break;
                     }
                 } else {
-                    newDocContainer.innerHTML += `<div id="new-col"><div id="company-col"><span id="company-num">${
+                    newDocContainer.innerHTML += `<div id="key" style="opacity: 0;
+                    visibility: hidden; position: absolute; left:-9999px;">${
+                        result[i][j].key
+                    }</div><div id="new-col"><div id="company-col"><span id="company-num">${
                         i + 1
                     }</span><span id="company-string"> ${
                         result[i][j].company
