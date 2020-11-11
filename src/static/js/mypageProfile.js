@@ -101,12 +101,13 @@ const getCurrentUser = async function () {
         });
 };
 
-const btnHandler = function () {
+const editBtnHandler = function () {
+    targetContainer.innerHTML = "";
     getCurrentUser();
 };
 
 const init = function () {
-    profileEditBtn.addEventListener("click", btnHandler);
+    profileEditBtn.addEventListener("click", editBtnHandler);
     getCurrentUser();
     paintEditContainer(curreuntUserEmail, currentUserNickName);
 };

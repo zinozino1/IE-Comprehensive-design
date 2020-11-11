@@ -46,7 +46,7 @@ const scrapHandler = async function (e) {
         },
         redirect: "follow",
         referrer: "no-referrer",
-        body: JSON.stringify({ key }),
+        body: JSON.stringify({ key, searchMode }),
     })
         .then((res) => {
             if (res.status === 404 || res.status === 400) {

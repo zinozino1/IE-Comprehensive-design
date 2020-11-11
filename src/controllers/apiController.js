@@ -39,23 +39,47 @@ export const searchUser = async (req, res) => {
 export const scrapDocument = async (req, res) => {
     console.log(req.body);
     const {
-        body: { key },
+        body: { key, searchMode },
         user: { id },
     } = req;
+    console.log(searchMode);
     try {
-        const document = await documentModel.findOne({ key });
         const currentUser = await userModel.findById(id);
-        const func = function (v) {
+        const compare = function (v) {
             if (v.key === key) {
                 return true;
             }
         };
+        if (searchMode === "question" || searchMode === "keyword") {
+            const document = await documentModel.findOne({ key });
 
-        if (currentUser.scrap.length === 0 || !currentUser.scrap.some(func)) {
-            currentUser.scrap.push(document);
-            currentUser.save();
-        } else {
-            res.send({ msg: "이미 스크랩한 자소서 입니다." });
+            if (
+                currentUser.scrap.length === 0 ||
+                !currentUser.scrap.some(compare)
+            ) {
+                currentUser.scrap.push(document);
+                currentUser.save();
+            } else {
+                res.send({ msg: "이미 스크랩한 자소서 입니다." });
+            }
+        } else if (searchMode === "task") {
+            if (
+                currentUser.scrap.length === 0 ||
+                !currentUser.scrap.some(compare)
+            ) {
+                const tmpDocument = await documentModel.findOne({ key });
+                const targetIndex = tmpDocument.index;
+                const documents = await documentModel
+                    .find()
+                    .where("index")
+                    .equals(targetIndex);
+                documents.forEach((item) => {
+                    currentUser.scrap.push(item);
+                });
+                currentUser.save();
+            } else {
+                res.send({ msg: "이미 스크랩한 자소서 입니다." });
+            }
         }
     } catch (error) {
         console.log(error);
