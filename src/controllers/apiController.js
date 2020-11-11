@@ -51,9 +51,11 @@ export const scrapDocument = async (req, res) => {
             }
         };
 
-        if (!currentUser.scrap.some(func)) {
+        if (currentUser.scrap.length === 0 || !currentUser.scrap.some(func)) {
             currentUser.scrap.push(document);
             currentUser.save();
+        } else {
+            res.send({ msg: "이미 스크랩한 자소서 입니다." });
         }
     } catch (error) {
         console.log(error);
