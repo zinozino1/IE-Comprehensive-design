@@ -1,10 +1,13 @@
 const scrapBtn = document.querySelector("#resume-scrap");
 const targetContainer = document.querySelector(".mypage-articles");
 
+// const mypageContainer = document.querySelector("");
+
 let currentPage = 1;
 
 const scrapPagingData = function (result, curr) {
-    targetContainer.innerHTML = "";
+    const scrapListContainer = document.querySelector(".scrap-list-container");
+    scrapListContainer.innerHTML = "";
     for (let i = curr * 10 - 10; i <= curr * 10; i++) {
         const newDocContainer = document.createElement("div");
         newDocContainer.className = "new-document";
@@ -133,14 +136,8 @@ const scrapPagingData = function (result, curr) {
             }
         }
 
-        targetContainer.appendChild(newDocContainer);
+        scrapListContainer.appendChild(newDocContainer);
     }
-};
-
-const makeScrapPagingContainer = function () {
-    const pageContainer = document.createElement("div");
-    pageContainer.classList.add("scrapPaging-container");
-    targetContainer.appendChild(pageContainer);
 };
 
 const scrapPaging = function (result) {
@@ -180,10 +177,10 @@ const scrapPaging = function (result) {
         html += `<a id='scrapNext'>></a>`;
     }
     const pageContainer = document.querySelector(".scrapPaging-container");
-    console.log(pageContainer);
+
     pageContainer.innerHTML = html;
     const pages = document.querySelectorAll(".scrapPaging-container a");
-    console.log(pages);
+
     const currentPageNum = document.querySelector(
         `#${CSS.escape(currentPage)}`,
     );
@@ -192,10 +189,8 @@ const scrapPaging = function (result) {
     currentPageNum.style.fontWeight = "600";
     currentPageNum.style.color = "#fff";
 
-    console.log(currentPageNum);
     for (let i = 0; i < pages.length; i++) {
         pages[i].addEventListener("click", function (e) {
-            console.log(e.target.id);
             if (pages[i].id === "scrapPrev") {
                 currentPage = prev;
             } else if (pages[i].id === "scrapNext") {
@@ -275,10 +270,34 @@ const getScrapData = async function () {
         });
 };
 
+const makePartionContainer = function () {
+    const partitionContainer = document.createElement("div");
+    partitionContainer.classList.add("scrap-partial-container");
+    partitionContainer.innerHTML = `<div class="scrap-partition">
+    <div id="scrap-company-name">기업명 </div>
+    <div id="scrap-task-name">직무 </div>
+</div>`;
+    targetContainer.appendChild(partitionContainer);
+};
+
+const makeScrapListContainer = function () {
+    const scrapList = document.createElement("div");
+    scrapList.classList.add("scrap-list-container");
+    targetContainer.appendChild(scrapList);
+};
+
+const makeScrapPagingContainer = function () {
+    const pageContainer = document.createElement("div");
+    pageContainer.classList.add("scrapPaging-container");
+    targetContainer.appendChild(pageContainer);
+};
+
 const scrapBtnHandler = function () {
     targetContainer.innerHTML = "";
-    makeScrapPagingContainer();
+    makePartionContainer();
     getScrapData();
+    makeScrapListContainer();
+    makeScrapPagingContainer();
 };
 
 const init = function () {

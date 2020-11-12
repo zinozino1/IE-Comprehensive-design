@@ -4,7 +4,6 @@
 /* common css */
 html,
 body {
-    /* height: 100%; */
 }
 .inner {
     width: 1300px;
@@ -12,10 +11,6 @@ body {
     /* border: 1px solid red; */
 }
 .container {
-    /* min-height: 100%;
-    position: relative;
-
-    box-sizing: border-box; */
 }
 /* --common css */
 
@@ -178,13 +173,11 @@ section .section-container .join .to-login a {
 /* --main.pug */
 /* footer.pug */
 footer {
-    /* position: absolute;
-    bottom: 0;
-    width: 100%; */
 }
 
 .footer-content {
     font-size: 14px;
+
     height: 30vh;
     background-color: #222;
     box-sizing: border-box;
@@ -429,7 +422,7 @@ footer {
 .mypage-container {
     border: 1px solid #d8d1d1;
     padding-top: 10vh;
-    /* height: 100vh; */
+
     display: flex;
 }
 .mypage-container .mypage-list {
@@ -452,15 +445,15 @@ footer {
     /* box-shadow: 0 7px 15px rgba(0, 0, 0, 0.562);
     border-radius: 0 10px; */
     padding: 5px;
+}
+.mypage-container .mypage-list #profile-edit,
+.mypage-container .mypage-list #resume-scrap,
+.mypage-container .mypage-list #my-resume {
     cursor: pointer;
 }
-.mypage-container .mypage-list #profile-edit {
-}
-.mypage-container .mypage-list #resume-scrap {
-}
-.mypage-container .mypage-list #my-resume {
-}
-.mypage-container .mypage-list ul li div:hover {
+.mypage-container .mypage-list #profile-edit:hover,
+.mypage-container .mypage-list #resume-scrap:hover,
+.mypage-container .mypage-list #my-resume:hover {
     color: #3681d6;
 }
 
@@ -474,7 +467,9 @@ footer {
 }
 
 #profile-edit-container {
-    margin-top: 15vh;
+    margin: auto;
+    margin-top: 150px;
+    margin-bottom: 300px;
     border: 1px solid #d8d1d1;
     border-radius: 20px;
     height: 40vh;
@@ -527,7 +522,45 @@ footer {
     border: 1px solid #d8d1d1;
     border-radius: 7px;
 }
+.scrapPaging-container {
+    text-align: center;
+    padding: 50px 0;
+}
 
+.scrap-partial-container {
+}
+.scrap-partition {
+    margin: 0;
+    width: 100%;
+    font-size: 12px;
+    display: flex;
+
+    border-top: 1px solid #bdb5b5;
+    padding: 7px 0;
+    background-color: #f7f7f7;
+    color: #898989;
+    font-weight: 600;
+}
+.scrap-partition #scrap-company-name {
+    text-align: center;
+    flex: 5;
+}
+.scrap-partition #scrap-task-name {
+    text-align: center;
+    flex: 3;
+}
+.paging-container a,
+.scrapPaging-container a {
+    display: inline-block;
+    border: 1px solid #898989;
+    text-align: center;
+    /* margin-left: 10px;
+    padding: 5px 10px; */
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+}
 /* --mypage.pug */
 /* edit.pug */
 
@@ -747,20 +780,6 @@ footer {
     border: 1px solid #898989;
 }
 
-.paging-container {
-    padding: 10px;
-}
-.paging-container a {
-    display: inline-block;
-    border: 1px solid #898989;
-    text-align: center;
-    /* margin-left: 10px;
-    padding: 5px 10px; */
-    width: 25px;
-    height: 25px;
-    margin-left: 10px;
-    cursor: pointer;
-}
 #search-section {
 }
 .blank-container {
