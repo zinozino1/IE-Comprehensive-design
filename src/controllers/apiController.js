@@ -1,6 +1,7 @@
 import userModel from "../models/user";
 import routes from "../routes";
 import documentModel from "../models/document";
+import myDocumentModel from "../models/myDocument";
 
 export const saveUser = async (req, res) => {
     console.log(req.body);
@@ -81,6 +82,20 @@ export const scrapDocument = async (req, res) => {
                 res.send({ msg: "이미 스크랩한 자소서 입니다." });
             }
         }
+    } catch (error) {
+        console.log(error);
+    } finally {
+        res.end();
+    }
+};
+
+export const saveMyDocument = async (req, res) => {
+    console.log(req.body);
+    const { title, question, answer } = req.body;
+    const { id } = req.user;
+    const data = { title, question, answer, author: id };
+    try {
+        await myDocumentModel.create(data);
     } catch (error) {
         console.log(error);
     } finally {

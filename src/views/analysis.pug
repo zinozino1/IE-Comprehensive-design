@@ -4,16 +4,16 @@ block content
     section
         .inner
           .analysis-container
-            form#anal-form(action='/document/analysis', method='post')
+            
               .analysis-input
                 h3 제목
-                textarea#anal-input-title(name="title", cols="100", rows="2", form="anal-form")
+                textarea#anal-input-title(cols="100", rows="2")
                 h3 문항
-                textarea#anal-req(name="question", cols="100", rows="10", form="anal-form")
+                textarea#anal-req(cols="100", rows="10")
                 h3 답변
-                textarea#anal-res(name="answer", cols="100", rows="20", form="anal-form")
+                textarea#anal-res(cols="100", rows="20")
               .analBtn-container
-                a#anal-search(href="#") 유사 자소서 조회
-                button#anal-my(type="submit") 내 자소서 분석
+                button#anal-search 유사 자소서 조회
+                button#anal-my 내 자소서 분석
               .analSaveBtn-container
-                a#anal-saveBtn(href="#") 저장
+                button#anal-saveBtn 저장

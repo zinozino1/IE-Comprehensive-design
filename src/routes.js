@@ -36,6 +36,7 @@ const routes = {
     searchUser: "/searchUser",
     saveUser: "/saveUser",
     scrapDocument: "/scrapDocument",
+    saveMyDocument: "/saveMyDocument",
 };
 
 export default routes;
