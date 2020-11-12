@@ -19,6 +19,14 @@ const saveInDB = async function (data) {
         .then((res) => {
             if (res.status === 404 || res.status === 400) {
                 console.log(res.status);
+            } else {
+                analSaveBtn.style.background = "#16d200";
+                analSaveBtn.style.transition = "0.5s";
+                analSaveBtn.innerText = "저장완료!";
+                setTimeout(() => {
+                    analSaveBtn.style.background = "#1369ea";
+                    analSaveBtn.innerText = "저장";
+                }, 2000);
             }
         })
         .catch((error) => {

@@ -716,7 +716,7 @@ footer {
     justify-content: center;
     box-sizing: border-box;
     margin: 30px 0;
-    margin-bottom: 200px;
+    margin-bottom: 210px;
 }
 .searchDoc-container .paging-container .pages {
     display: flex;
@@ -902,6 +902,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
 }
 .analysis-container .analysis-input {
     border: 1px solid blueviolet;
@@ -921,7 +922,7 @@ footer {
 }
 .analysis-container .analBtn-container #anal-search {
 }
-.analysis-container .analBtn-container #anal-my {
+.analysis-container .analBtn-container #anal-myDoc {
     margin-left: 20px;
 }
 
@@ -930,7 +931,18 @@ footer {
     border: 1px solid blueviolet;
 }
 .analysis-container .analSaveBtn-container #anal-saveBtn {
+    width: 150px;
+    height: 35px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #1369ea;
+    border: none;
+
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-size: 16px;
 }
+
 .analysis-container .analysis-input,
 .analysis-container .analBtn-container,
 .analysis-container .analSaveBtn-container {

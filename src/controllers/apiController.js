@@ -102,3 +102,13 @@ export const saveMyDocument = async (req, res) => {
         res.end();
     }
 };
+
+export const searchSimillarDocument = (req, res) => {
+    console.log("similtar");
+    res.end();
+};
+
+export const analysisMyDocument = (req, res) => {
+    console.log("anal");
+    res.end();
+};

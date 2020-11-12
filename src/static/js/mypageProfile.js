@@ -28,9 +28,14 @@ const saveUser = function () {
             .then((res) => {
                 console.log(res.status);
                 e.target.innerText = "저장완료!";
-                e.target.style.background = "#fae206";
+                e.target.style.background = "#16de00";
                 e.target.style.color = "#f8fafc";
-                e.target.style.transition = "0.2s";
+                e.target.style.transition = "0.5s";
+                setTimeout(() => {
+                    e.target.innerText = "저장";
+                    e.target.style.background = "#1369ea";
+                    e.target.style.color = "#fff";
+                }, 2000);
             })
 
             .catch((error) => {
