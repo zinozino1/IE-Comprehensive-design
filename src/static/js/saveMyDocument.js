@@ -1,7 +1,4 @@
 const analSaveBtn = document.querySelector("#anal-saveBtn");
-const inputTitle = document.querySelector("#anal-input-title");
-const inputQuestion = document.querySelector("#anal-req");
-const inputAnswer = document.querySelector("#anal-res");
 
 const saveInDB = async function (data) {
     await fetch("http://localhost:4000/api/saveMyDocument", {
@@ -35,6 +32,9 @@ const saveInDB = async function (data) {
 };
 
 const saveBtnHandler = function (e) {
+    const inputTitle = document.querySelector("#anal-input-title");
+    const inputQuestion = document.querySelector("#anal-req");
+    const inputAnswer = document.querySelector("#anal-res");
     const inputData = {
         title: inputTitle.value,
         question: inputQuestion.value,

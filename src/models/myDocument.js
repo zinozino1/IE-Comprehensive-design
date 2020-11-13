@@ -8,6 +8,7 @@ const myDocumentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
     },
+    createdAt: Date,
 });
 
 const myDocumentModel = mongoose.model("myDocument", myDocumentSchema);
