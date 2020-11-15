@@ -39,6 +39,7 @@ app.use(
         store: new CookieStore({ mongooseConnection: mongoose.connection }),
     }),
 );
+
 app.use(passport.initialize());
 app.use(flash());
 app.use(passport.session());
@@ -47,6 +48,11 @@ app.use("/", globalRouter);
 app.use("/document", documentRouter);
 app.use("/user", userRouter);
 app.use("/api", apiRouter);
+
+app.use("/testPost", (req, res) => {
+    console.log(req.body);
+    res.end();
+});
 // app.use("/mypage", )
 // app.get("/", function (req, res) {
 //     res.render("main"); // login data

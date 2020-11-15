@@ -7,32 +7,12 @@
         <title>Prototype</title>
     </head>
     <body>
-        <div id="profile-edit-container">
-            <form id="profile-form">
-                <div id="user-email-container">
-                    <label for="user-email">email</label
-                    ><input type="text" id="user-email" value="${email}" />
-                </div>
-                <div id="user-nickName-container">
-                    <label for="user-nickName">ninkname</label
-                    ><input
-                        type="text"
-                        id="user-nickName"
-                        value="${nickName}"
-                    />
-                </div>
-                <div>
-                    <button id="profile-saveBtn">Save</button>
-                </div>
-                <div>
-                    <a href="/analysis">
-                        <div id="analysis-new">새로 작성하기</div>
-                    </a>
-                    <a href="#">
-                        <div id="analysis-exist">자소서 불러오기</div>
-                    </a>
-                </div>
-            </form>
-        </div>
+        <form action="http://localhost:5000/post" method="POST">
+            <div>
+                답변 : <input type="text" name="answer" placeholder="답변" />
+            </div>
+
+            <input type="submit" />
+        </form>
     </body>
 </html>
