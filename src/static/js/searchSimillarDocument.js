@@ -1,10 +1,17 @@
-const searchBtn = document.querySelector("#anal-search");
+const simillarSearchBtn = document.querySelector("#anal-search");
+const myDocAnalBtn = document.querySelector("#anal-myDoc");
+
 const analysisTopContainer = document.querySelector(".anal-top");
 const inputContainer = document.querySelector(".analysis-input");
 const loaderContainer = document.querySelector("#loader");
+const resultContainer = document.createElement("div");
+
+let mode = "none";
+
+const loaderCloser = function () {};
 
 const loader = function () {
-    loaderContainer.innerHTML += "loading...";
+    loaderContainer.innerHTML = "loading...";
 
     loaderContainer.style.display = "block";
 };
@@ -43,34 +50,61 @@ const tmpAnalData = {
 
 const showResultDocument = function (result) {};
 
-const splitView = function () {
-    const similarDocContainer = document.createElement("div");
-    const inputTitle = document.querySelector("#anal-input-title");
-    const question = document.querySelector("#anal-req");
-    const answer = document.querySelector("#anal-res");
+const splitViewClosure = function () {
+    let status = "none";
 
-    similarDocContainer.classList.add("simillar-doc-container");
-    similarDocContainer.style.border = "1px solid black";
-    similarDocContainer.innerHTML = "";
-    similarDocContainer.classList.add("analysis-newContainer-init");
+    return function () {
+        if (status === "none") {
+            const inputTitle = document.querySelector("#anal-input-title");
+            const question = document.querySelector("#anal-req");
+            const answer = document.querySelector("#anal-res");
 
-    inputTitle.classList.add("analysis-traverse-animation-init");
-    question.classList.add("analysis-traverse-animation-init");
-    answer.classList.add("analysis-traverse-animation-init");
+            resultContainer.classList.add("simillar-doc-container");
+            resultContainer.style.border = "1px solid black";
 
-    analysisTopContainer.appendChild(similarDocContainer);
+            resultContainer.classList.add("analysis-newContainer-init");
 
-    setTimeout(() => {
-        inputTitle.classList.add("analysis-traverse-animation");
-        question.classList.add("analysis-traverse-animation");
-        answer.classList.add("analysis-traverse-animation");
-        similarDocContainer.classList.add("analysis-traverse-animation");
-    }, 30);
+            inputTitle.classList.add("analysis-traverse-animation-init");
+            question.classList.add("analysis-traverse-animation-init");
+            answer.classList.add("analysis-traverse-animation-init");
+
+            analysisTopContainer.appendChild(resultContainer);
+
+            setTimeout(() => {
+                inputTitle.classList.add("analysis-traverse-animation");
+                question.classList.add("analysis-traverse-animation");
+                answer.classList.add("analysis-traverse-animation");
+                resultContainer.classList.add("analysis-traverse-animation");
+            }, 30);
+
+            status = "split";
+            console.log(status);
+        } else {
+            resultContainer.parentNode.removeChild(resultContainer);
+            status = "none";
+        }
+    };
 };
 
-const fetchData = async function (data) {
+const split = splitViewClosure();
+
+const branchData = function (json, route) {
+    setTimeout(() => {
+        loaderContainer.style.display = "none";
+
+        if (mode === "none") {
+            split();
+            mode = route === "searchSimillarDocument" ? "simillar" : "myDoc";
+        }
+        resultContainer.innerHTML = json.data;
+
+        showResultDocument(tmpAnalData);
+    }, 2000);
+};
+
+const fetchData = async function (data, route) {
     // 파이썬 클라우드 서버로 보내야함
-    await fetch("http://localhost:4000/api/searchSimillarDocument", {
+    await fetch(`http://localhost:4000/api/${route}`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -92,12 +126,7 @@ const fetchData = async function (data) {
         })
         .then(async (json) => {
             // 파이썬 서버로부터 온 데이터 로직 처리
-            setTimeout(() => {
-                loaderContainer.style.display = "none";
-                splitView();
-
-                showResultDocument(tmpAnalData);
-            }, 2000);
+            branchData(json, route);
         })
 
         .catch((error) => {
@@ -105,7 +134,7 @@ const fetchData = async function (data) {
         });
 };
 
-const searchBtnHandler = function (e) {
+const btnHandler = function (e) {
     const inputTitle = document.querySelector("#anal-input-title");
     const inputQuestion = document.querySelector("#anal-req");
     const inputAnswer = document.querySelector("#anal-res");
@@ -114,11 +143,18 @@ const searchBtnHandler = function (e) {
         question: inputQuestion.value,
         answer: inputAnswer.value,
     };
-    fetchData(inputData);
+
+    if (e.target.id === "anal-search") {
+        fetchData(inputData, "searchSimillarDocument");
+    } else {
+        fetchData(inputData, "analysisMyDocument");
+    }
 };
 
 const init = function () {
-    searchBtn.addEventListener("click", searchBtnHandler);
+    mode = "none";
+    simillarSearchBtn.addEventListener("click", btnHandler);
+    myDocAnalBtn.addEventListener("click", btnHandler);
 };
 
-if (searchBtn) init();
+if (simillarSearchBtn) init();
