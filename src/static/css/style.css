@@ -998,7 +998,69 @@ footer {
 .analysis-traverse-animation {
     transition: all 1s;
 
-    width: 500px;
+    width: 560px;
+}
+
+.anlaysis-input {
+    height: 700px;
+}
+
+.simillar-doc-container {
+    margin-left: 20px;
+    height: 700px;
+    overflow: auto;
+    border: 1px solid red;
+}
+
+#simillar-partition {
+    padding: 10px;
+    background-color: #4e61ff;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+
+#simillar-inner-container {
+}
+
+#simillar-list {
+}
+
+#simillar-item {
+    border: 1px solid black;
+    background-color: #f8fafc;
+    padding: 20px 0;
+}
+
+#simillar-item-number {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #d8d1d1;
+    margin: 5px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #ffee55;
+}
+
+#simillar-item-company,
+#simillar-item-task,
+#simillar-item-question,
+#simillar-item-answer,
+#simillar-item-similarity {
+    border: 1px solid #d8d1d1;
+    padding: 20px 10px;
+    margin: 5px;
+    background-color: #fff;
+}
+
+#simillar-item-similarity {
+}
+
+#simillar-item-company-span,
+#simillar-item-task-span,
+#simillar-item-question-span,
+#simillar-item-answer-span,
+#simillar-item-similarity-span {
 }
 
 /* --analysis.pug */
