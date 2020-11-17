@@ -4,11 +4,9 @@ const myDocumentSchema = new mongoose.Schema({
     title: String,
     question: String,
     answer: String,
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
-    },
-    createdAt: Date,
+    author: String,
+    createdAt: Object,
+    RealDate: Date,
 });
 
 const myDocumentModel = mongoose.model("myDocument", myDocumentSchema);

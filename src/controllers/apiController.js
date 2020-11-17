@@ -94,8 +94,22 @@ export const saveMyDocument = async (req, res) => {
     const { title, question, answer } = req.body;
     const { id } = req.user;
     const now = new Date();
-    console.log(now);
-    const data = { title, question, answer, author: id, createdAt: now };
+
+    const date = {
+        year: now.getFullYear(),
+        month: now.getMonth() + 1,
+        day: now.getDate(),
+        hour: now.getHours(),
+        min: now.getMinutes(),
+    };
+    const data = {
+        title,
+        question,
+        answer,
+        author: id,
+        createdAt: date,
+        RealDate: now,
+    };
     try {
         await myDocumentModel.create(data);
     } catch (error) {
@@ -113,4 +127,24 @@ export const searchSimillarDocument = (req, res) => {
 export const analysisMyDocument = (req, res) => {
     console.log("anal");
     res.send({ data: "anal" });
+};
+
+export const searchMyDocument = async (req, res) => {
+    const { userId } = req.body;
+
+    try {
+        const sortedMyDocuments = await myDocumentModel
+            .find()
+            .sort({ RealDate: -1 });
+        const myDocuments = await myDocumentModel
+            .find()
+            .where("author")
+            .equals(userId);
+        console.log(sortedMyDocuments);
+        res.send(myDocuments);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        res.end();
+    }
 };

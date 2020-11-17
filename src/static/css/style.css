@@ -559,7 +559,8 @@ footer {
 
 .scrap-partial-container {
 }
-.scrap-partition {
+.scrap-partition,
+.myDoc-partition {
     margin: 0;
     width: 100%;
     font-size: 12px;
@@ -571,6 +572,15 @@ footer {
     color: #898989;
     font-weight: 600;
 }
+.myDoc-partition #myDoc-title {
+    text-align: center;
+    flex: 2;
+}
+.myDoc-partition #myDoc-createdAt {
+    padding-left: 500px;
+    text-align: center;
+    flex: 3;
+}
 .scrap-partition #scrap-company-name {
     text-align: center;
     flex: 5;
@@ -580,7 +590,8 @@ footer {
     flex: 3;
 }
 .paging-container a,
-.scrapPaging-container a {
+.scrapPaging-container a,
+.myDoc-paging-container a {
     display: inline-block;
     border: 1px solid #898989;
     text-align: center;
@@ -729,7 +740,8 @@ footer {
     text-align: center;
 }
 
-.searchDoc-container .paging-container {
+.searchDoc-container .paging-container,
+.myDoc-paging-container {
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -755,7 +767,8 @@ footer {
     /* background-color: #fff599; */
     transition: 0.2s;
 }
-.new-document:hover #company-num {
+.new-document:hover #company-num,
+.new-document:hover #myDoc-num {
     background-color: #ffee55;
     transition: 0.4s;
 }
@@ -855,17 +868,20 @@ footer {
 }
 #new-col span:nth-last-child(1) {
 }
-#company-col {
+#company-col,
+#myDoc-title-col {
     flex: 3;
 
     text-align: left;
 }
-#task-col {
+#task-col,
+#myDoc-createdAt-col {
     flex: 1;
 
     text-align: left;
 }
-#company-num {
+#company-num,
+#myDoc-num {
     margin-bottom: -1px;
     text-align: center;
     display: inline-block;
@@ -875,10 +891,12 @@ footer {
     height: 25px;
     padding: 1px;
 }
-#company-string {
+#company-string,
+#myDoc-title-string {
     padding-left: 20px;
 }
-#task-string {
+#task-string,
+#myDoc-createdAt-string {
 }
 
 /* --search.pug */

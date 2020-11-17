@@ -280,6 +280,15 @@ const btnHandler = function (e) {
         answer: inputAnswer.value,
     };
 
+    if (
+        inputData.title === "" ||
+        inputData.question === "" ||
+        inputData.answer === ""
+    ) {
+        alert("빈칸을 채워주세요!");
+        return;
+    }
+
     if (e.target.id === "anal-search") {
         fetchData(inputData, "searchSimillarDocument");
     } else {

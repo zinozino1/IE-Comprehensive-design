@@ -35,6 +35,7 @@ const routes = {
     // api
     searchUser: "/searchUser",
     saveUser: "/saveUser",
+    searchMyDocument: "/searchMyDocument",
     scrapDocument: "/scrapDocument",
     saveMyDocument: "/saveMyDocument",
     searchSimillarDocument: "/searchSimillarDocument",
