@@ -120,7 +120,7 @@ const split = splitViewClosure();
 const makeSimillarResult = function (data) {
     resultContainer.innerHTML = "";
     resultContainer.innerHTML = `<div id="simillar-partition">
-    조회 결과
+    유사 자소서 조회 결과
 </div><div id="simillar-inner-container">
 </div>`;
     const list = document.createElement("div");
@@ -148,7 +148,24 @@ const makeSimillarResult = function (data) {
 
         const similarity = document.createElement("div");
         similarity.id = "simillar-item-similarity";
-        similarity.innerText = v.similarity;
+        similarity.innerHTML = `<div class="flex-wrapper">
+        <div class="single-chart">
+          <svg viewBox="0 0 36 36" class="circular-chart green">
+            <path class="circle-bg"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <path class="circle"
+              stroke-dasharray="${v.similarity}, 100"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <text x="18" y="20.35" class="percentage">${v.similarity}%</text>
+          </svg>
+        </div>
+        </div>`;
 
         const companySpan = document.createElement("span");
         companySpan.id = "simillar-item-company-span";
@@ -167,6 +184,8 @@ const makeSimillarResult = function (data) {
         similaritySpan.innerText = "유사도";
 
         item.appendChild(numbering);
+        item.appendChild(similaritySpan);
+        item.appendChild(similarity);
         item.appendChild(companySpan);
         item.appendChild(company);
         item.appendChild(taskSpan);
@@ -175,8 +194,6 @@ const makeSimillarResult = function (data) {
         item.appendChild(question);
         item.appendChild(answerSpan);
         item.appendChild(answer);
-        item.appendChild(similaritySpan);
-        item.appendChild(similarity);
 
         list.appendChild(item);
     });
