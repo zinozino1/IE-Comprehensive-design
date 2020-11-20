@@ -42,8 +42,16 @@ const myDocPagingData = function (result, curr) {
         }</span></div> <div id="myDoc-createdAt-col"><span id="myDoc-createdAt-string"> ${
             result[i].createdAt.year
         }.${result[i].createdAt.month}.${result[i].createdAt.day} ${
-            result[i].createdAt.hour
-        }:${result[i].createdAt.min}</span></div></div> `;
+            result[i].createdAt.hour === 0 ? "00" : result[i].createdAt.hour
+        }:${
+            result[i].createdAt.min < 10
+                ? `0${result[i].createdAt.min}`
+                : result[i].createdAt.min
+        }</span></div><div><a href="http://localhost:4000/document/analysis?title=${
+            result[i].title
+        }&question=${result[i].question}&answer=${result[i].answer}&id=${
+            result[i]._id
+        }">분석</a></div></div> `;
 
         myDocListContainer.appendChild(newDocContainer);
     }
@@ -159,7 +167,8 @@ const makeMyDocPartionContainer = function () {
     partitionContainer.classList.add("myDoc-partial-container");
     partitionContainer.innerHTML = `<div class="myDoc-partition">
     <div id="myDoc-title">제목 </div>
-    <div id="myDoc-createdAt">생성일자 </div>
+    <div id="myDoc-createdAt">수정일자 </div>
+    <div id="myDoc-analysis-btn">분석 </div>
 </div>`;
     targetMyDocContainer.appendChild(partitionContainer);
 };

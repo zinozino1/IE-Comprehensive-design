@@ -38,6 +38,7 @@ const routes = {
     searchMyDocument: "/searchMyDocument",
     scrapDocument: "/scrapDocument",
     saveMyDocument: "/saveMyDocument",
+    getSaveMyDocument: "/getSaveMyDocument",
     searchSimillarDocument: "/searchSimillarDocument",
     analysisMyDocument: "/analysisMyDocument",
 };

@@ -572,14 +572,18 @@ footer {
     color: #898989;
     font-weight: 600;
 }
+.myDoc-partition #myDoc-analysis-btn {
+    text-align: center;
+    padding-right: 13px;
+}
+.myDoc-partition #myDoc-createdAt {
+    padding-left: 560px;
+    text-align: center;
+    flex: 3;
+}
 .myDoc-partition #myDoc-title {
     text-align: center;
     flex: 2;
-}
-.myDoc-partition #myDoc-createdAt {
-    padding-left: 500px;
-    text-align: center;
-    flex: 3;
 }
 .scrap-partition #scrap-company-name {
     text-align: center;
@@ -874,11 +878,15 @@ footer {
 
     text-align: left;
 }
-#task-col,
-#myDoc-createdAt-col {
+#task-col {
     flex: 1;
 
     text-align: left;
+}
+#myDoc-createdAt-col {
+    flex: 1;
+
+    text-align: center;
 }
 #company-num,
 #myDoc-num {
@@ -959,7 +967,7 @@ footer {
 
 .analysis-container .analysis-input {
     background-color: #f8fafc;
-    border-radius: 20px;
+
     border: 1px solid #d8d1d1;
 }
 .analysis-container .analysis-input h3 {

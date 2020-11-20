@@ -6,13 +6,22 @@ block content
           .analysis-container
             .anal-top
               .analysis-input
-                .analysis-input-title 나만의 자소서를 작성해보세요.
-                h3 제목
-                textarea#anal-input-title(cols="100", rows="2" required)
-                h3 문항
-                textarea#anal-req(cols="100", rows="4" required)
-                h3 답변
-                textarea#anal-res(cols="100", rows="12" required)
+                if query
+                    .analysis-input-title 나만의 자소서를 작성해보세요.
+                    h3 제목
+                    textarea#anal-input-title(cols="100", rows="2" required)=query.title 
+                    h3 문항
+                    textarea#anal-req(cols="100", rows="4" required)=query.question
+                    h3 답변
+                    textarea#anal-res(cols="100", rows="12" required)=query.answer
+                else 
+                    .analysis-input-title 나만의 자소서를 작성해보세요.
+                    h3 제목
+                    textarea#anal-input-title(cols="100", rows="2" required)
+                    h3 문항
+                    textarea#anal-req(cols="100", rows="4" required)
+                    h3 답변
+                    textarea#anal-res(cols="100", rows="12" required)
             .anal-bottom
               .analBtn-container
                 button#anal-search 유사 자소서 조회

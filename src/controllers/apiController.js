@@ -89,10 +89,41 @@ export const scrapDocument = async (req, res) => {
     }
 };
 
+export const getSaveMyDocument = async (req, res) => {
+    /// req,query.id 있으면 create가 아닌 update gogo
+    console.log(req.query);
+    const { title, question, answer, id } = req.query;
+    const now = new Date();
+
+    const date = {
+        year: now.getFullYear(),
+        month: now.getMonth() + 1,
+        day: now.getDate(),
+        hour: now.getHours(),
+        min: now.getMinutes(),
+    };
+    try {
+        await myDocumentModel.findOneAndUpdate(
+            { _id: id },
+            {
+                title,
+                question,
+                answer,
+                createdAt: date,
+                RealDate: now,
+            },
+        );
+    } catch (error) {
+        console.log(error);
+    } finally {
+        res.end();
+    }
+};
+
 export const saveMyDocument = async (req, res) => {
-    console.log(req.body);
     const { title, question, answer } = req.body;
     const { id } = req.user;
+
     const now = new Date();
 
     const date = {
@@ -140,7 +171,7 @@ export const searchMyDocument = async (req, res) => {
             .find()
             .where("author")
             .equals(userId);
-        console.log(sortedMyDocuments);
+
         res.send(myDocuments);
     } catch (error) {
         console.log(error);

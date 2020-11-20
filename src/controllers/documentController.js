@@ -92,7 +92,18 @@ export const getSelect = (req, res) => {
 export const postSelect = (req, res) => {};
 
 export const getAnalysis = (req, res) => {
-    res.render("analysis");
+    const query = {
+        title: req.query.title,
+        question: req.query.question,
+        answer: req.query.answer,
+    };
+    if (req.query.title || req.query.question || req.query.answer) {
+        console.log("query 있음");
+        res.render("analysis", { query });
+    } else {
+        console.log("query 없음");
+        res.render("analysis");
+    }
 };
 export const postAnalysis = (req, res) => {
     console.log(req.body);
