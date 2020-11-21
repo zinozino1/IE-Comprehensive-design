@@ -1,6 +1,10 @@
 const analSaveBtn = document.querySelector("#anal-saveBtn");
 
 const saveInDB = async function (data) {
+    if (data.title === "" || data.question === "" || data.answer === "") {
+        alert("빈칸을 채워주세요.");
+        return;
+    }
     function getQueryStringObject() {
         let a = window.location.search.substr(1).split("&");
         if (a === "") return {};

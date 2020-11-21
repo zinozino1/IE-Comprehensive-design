@@ -606,6 +606,13 @@ footer {
     margin-left: 10px;
     cursor: pointer;
 }
+#analysis-from-mypage {
+    border: 1px solid #d8d1d1;
+    padding: 5px 7px;
+}
+#analysis-from-mypage:hover {
+    border: 1px solid #898998;
+}
 /* --mypage.pug */
 /* edit.pug */
 
@@ -815,7 +822,7 @@ footer {
     background-color: white;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: #898989 1px 1px 1px;
+    /* box-shadow: #898989 1px 1px 1px; */
 }
 #scrap-btn {
     width: 30px;

@@ -47,11 +47,11 @@ const myDocPagingData = function (result, curr) {
             result[i].createdAt.min < 10
                 ? `0${result[i].createdAt.min}`
                 : result[i].createdAt.min
-        }</span></div><div><a href="http://localhost:4000/document/analysis?title=${
+        }</span></div><div><a id="analysis-from-mypage" href="http://localhost:4000/document/analysis?title=${
             result[i].title
         }&question=${result[i].question}&answer=${result[i].answer}&id=${
             result[i]._id
-        }">분석</a></div></div> `;
+        }"><i class="far fa-file-alt"></i></a></div></div> `;
 
         myDocListContainer.appendChild(newDocContainer);
     }
