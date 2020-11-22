@@ -76,7 +76,6 @@ export const postKeywordSearch = async (req, res) => {
             answer: { $regex: `${keyword}` },
         });
 
-        console.log(documents[0]);
         res.send({ result: documents });
     } catch (error) {
         console.log(error);
@@ -98,10 +97,8 @@ export const getAnalysis = (req, res) => {
         answer: req.query.answer,
     };
     if (req.query.title || req.query.question || req.query.answer) {
-        console.log("query 있음");
         res.render("analysis", { query });
     } else {
-        console.log("query 없음");
         res.render("analysis");
     }
 };

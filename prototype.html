@@ -1,23 +1,67 @@
-<!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./prototype.css" />
-        <title>Prototype</title>
-    </head>
-    <body>
-        <div>
-            <form action="">
-                <button></button>
-                <button>
-
-
-
-
-                </button>
-                <a href=`http://localhost:4000/document/analysis?title=${result[i].title}&question=${result[i].question}&answer=${result[i].answer}`>분석</a>
-            </form>
+<body>
+    <h1><a href="index.html">WEB</a></h1>
+    <input
+        id="n_d"
+        type="button"
+        value="night"
+        onclick="
+    "
+    />
+    <div id="grid">
+        <ol>
+            <li><a href="1.html">HTML</a></li>
+            <li><a href="2.html" style="background-color: red">CSS</a></li>
+            <li><a href="3.html">JavaScrpit</a></li>
+        </ol>
+        <div id="article">
+            <h2>
+                <strong
+                    ><a
+                        title="ㅋㅋ"
+                        target="_blank"
+                        href="https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%A7%88%EC%9D%B4%EB%8B%9D"
+                        >DataMining</a
+                    ></strong
+                >
+            </h2>
+            <p>
+                데이터 마이닝은 대규모로 저장된 데이터 안에서 체계적이고
+                자동적으로 통계적 규칙이나 패턴을 분석하여 가치있는 정보를
+                추출하는 과정이다. 다른 말로는 KDD라고도 일컫는다. 데이터
+                마이닝은 통계학에서 패턴 인식에 이르는 다양한 계량 기법을
+                사용한다. 데이터 마이닝 기법은 통계학쪽에서 발전한
+                탐색적자료분석, 가설 검정, 다변량 분석, 시계열 분석,
+                일반선형모형 등의 방법론과 데이터베이스 쪽에서 발전한 OLAP
+                (온라인 분석 처리:On-Line Analytic Processing), 인공지능
+                진영에서 발전한 SOM, 신경망, 전문가 시스템 등의 기술적인
+                방법론이 쓰인다. 데이터 마이닝의 응용 분야로 신용평점
+                시스템(Credit Scoring System)의 신용평가모형 개발,
+                사기탐지시스템(Fraud Detection System), 장바구니 분석(Market
+                Basket Analysis), 최적 포트폴리오 구축과 같이 다양한 산업
+                분야에서 광범위하게 사용되고 있다. 단점으로는, 자료에 의존하여
+                현상을 해석하고 개선하려고 하기 때문에 자료가 현실을 충분히
+                반영하지 못한 상태에서 정보를 추출한 모형을 개발할 경우 잘못된
+                모형을 구축하는 오류를 범할 수가 있다.[1]
+            </p>
         </div>
-    </body>
-</html>
+    </div>
+    <input
+        id="n_d"
+        type="button"
+        value="night"
+        onclick="
+    var target = document.querySelector('body');
+    var mode = document.querySelectorAll('input');
+    if(this.value == 'night'){
+      target.style.backgroundColor='black';
+      target.style.color = 'white';
+      this.value = 'day';
+      mode[0].value = 'day';
+    } else {
+      target.style.backgroundColor='white';
+      target.style.color = 'black';
+      this.value = 'night';
+      mode[0].value = 'night';
+    }"
+    />
+</body>

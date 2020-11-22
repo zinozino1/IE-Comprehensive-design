@@ -240,7 +240,7 @@ const branchData = function (json, route) {
 
 const fetchData = async function (data, route) {
     // 파이썬 클라우드 서버로 보내야함
-    await fetch(`http://localhost:4000/api/${route}`, {
+    await fetch(`http://localhost:5000/`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
