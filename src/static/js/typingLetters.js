@@ -31,6 +31,7 @@ const addLetter = function (params) {
 
 const init = function (params) {
     addLetter();
+    localStorage.setItem("isFirst", "true");
 };
 
 if (targetText) init();

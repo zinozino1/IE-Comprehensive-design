@@ -375,6 +375,9 @@ footer {
 /* home.pug */
 
 .search-article {
+    background: url("../images/main2.jpg") no-repeat center center;
+    background-size: cover;
+    color: black;
 }
 .search-article .search-container,
 .analysis-article .analysis-container {
@@ -397,6 +400,7 @@ footer {
 .search-article .search-container h2 {
     border: 1px solid black;
     font-size: 35px;
+    background-color: #fafafa;
 }
 .search-article .search-container p {
     border: 1px solid black;
@@ -409,6 +413,9 @@ footer {
 }
 
 .analysis-article {
+    background: url("../images/main3.jpg") no-repeat center center;
+    background-size: cover;
+    color: white;
 }
 .analysis-article .analysis-container {
     align-items: flex-end;
@@ -445,6 +452,10 @@ footer {
 }
 .analysis-article .analysis-container #analysis-exist {
 }
+
+/* background: url("../images/main4.jpg") no-repeat center center;
+    background-size: cover;
+    color: white; */
 
 /* --home.pug */
 /* mypage.pug */

@@ -7,11 +7,15 @@ const loaderContainer = document.querySelector("#loader");
 const resultContainer = document.createElement("div");
 
 let mode = "none";
+let firstAnalysis = true;
 
-const loaderCloser = function () {};
+const unloader = function () {
+    loaderContainer.innerHTML = "";
+    loaderContainer.style.display = "none";
+};
 
 const loader = function () {
-    loaderContainer.innerHTML = "loading...";
+    loaderContainer.innerHTML = "분석중입니다...";
 
     loaderContainer.style.display = "block";
 };
@@ -125,7 +129,7 @@ const makeSimillarResult = function (data) {
 </div>`;
     const list = document.createElement("div");
     list.id = "simillar-list";
-    tmpAnalData.result.forEach((v, i) => {
+    data.forEach((v, i) => {
         const item = document.createElement("div");
         item.id = "simillar-item";
 
@@ -219,50 +223,45 @@ const makeMyDocResult = function (data) {
 
 const branchData = function (json, route) {
     // 나중에 ajax 통신하면 setTimeout 없어면 댐
-    setTimeout(() => {
-        loaderContainer.style.display = "none";
 
-        if (mode === "none") {
-            // 초기상태 지정
-            split();
-        }
-        mode = route === "searchSimillarDocument" ? "simillar" : "myDoc";
+    loaderContainer.style.display = "none";
 
-        if (mode === "simillar") {
-            makeSimillarResult(json.data);
-        } else if (mode === "myDoc") {
-            makeMyDocResult(json.data);
-        }
+    if (mode === "none") {
+        // 초기상태 지정
+        split();
+    }
+    mode = route === "searchSimillarDocument" ? "simillar" : "myDoc";
 
-        // showResultDocument(tmpAnalData);
-    }, 2000);
+    if (mode === "simillar") {
+        makeSimillarResult(json);
+    } else if (mode === "myDoc") {
+        makeMyDocResult(json);
+    }
+
+    // showResultDocument(tmpAnalData);
 };
 
-const fetchData = async function (data, route) {
-    // 파이썬 클라우드 서버로 보내야함
-    await fetch(`http://localhost:5000/`, {
+const analysis = async function (data, route) {
+    console.log("분석시작");
+    await fetch(`http://localhost:5000/analysis`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
-        credentials: "same-origin",
         headers: {
             "Content-Type": "application/json",
         },
         redirect: "follow",
         referrer: "no-referrer",
-        body: JSON.stringify({
-            data,
-        }),
+        body: JSON.stringify(data),
     })
-        .then(async (res) => {
+        .then((res) => {
             console.log(res.status);
-            loader();
 
             return res.json();
         })
-        .then(async (json) => {
-            // 파이썬 서버로부터 온 데이터 로직 처리
+        .then((json) => {
             branchData(json, route);
+            console.log(json);
         })
 
         .catch((error) => {
@@ -270,14 +269,53 @@ const fetchData = async function (data, route) {
         });
 };
 
+const analysisReady = async function (data, route) {
+    console.log(data);
+    console.log("분석 준비중...");
+    console.log(localStorage.getItem("isFirst"));
+    const answerData = { answer: data.answer };
+
+    loader();
+    if (localStorage.getItem("isFirst") === "true") {
+        console.log("첫분석");
+        await fetch(`http://localhost:5000/input_answer`, {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+
+            redirect: "follow",
+            referrer: "no-referrer",
+        })
+            .then((res) => {
+                console.log(res.status);
+
+                return res.json();
+            })
+            .then((json) => {
+                console.log(json);
+                localStorage.setItem("isFirst", "false");
+                analysis(answerData, route);
+            })
+
+            .catch((error) => {
+                console.log(error);
+            });
+
+        firstAnalysis = false;
+    } else {
+        console.log("두번째이후분석");
+        analysis(answerData, route);
+    }
+};
+
 const btnHandler = function (e) {
     const inputTitle = document.querySelector("#anal-input-title");
     const inputQuestion = document.querySelector("#anal-req");
     const inputAnswer = document.querySelector("#anal-res");
     const inputData = {
-        title: inputTitle.value,
-        question: inputQuestion.value,
-        answer: inputAnswer.value,
+        title: `${inputTitle.value}`,
+        question: `${inputQuestion.value}`,
+        answer: `${inputAnswer.value}`,
     };
 
     if (
@@ -290,9 +328,9 @@ const btnHandler = function (e) {
     }
 
     if (e.target.id === "anal-search") {
-        fetchData(inputData, "searchSimillarDocument");
+        analysisReady(inputData, "searchSimillarDocument");
     } else {
-        fetchData(inputData, "analysisMyDocument");
+        analysisReady(inputData, "analysisMyDocument");
     }
 };
 
