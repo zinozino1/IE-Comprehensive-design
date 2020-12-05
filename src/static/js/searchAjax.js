@@ -31,7 +31,7 @@ const scrapHandler = async function (e) {
     e.stopPropagation();
     const key = this.parentNode.parentNode.firstChild.innerHTML;
 
-    this.style.background = "green";
+    this.style.background = "#16d200";
     this.style.transition = "0.4s";
     setTimeout(() => {
         this.style.background = "#fff";

@@ -20,6 +20,67 @@ const loader = function () {
     loaderContainer.style.display = "block";
 };
 
+const tmpMyAnalData = {
+    wordFrequency: [
+        {
+            text: "동아리",
+            num: 7,
+        },
+        {
+            text: "공연",
+            num: 7,
+        },
+        {
+            text: "열정",
+            num: 6,
+        },
+        {
+            text: "여행",
+            num: 8,
+        },
+        {
+            text: "안녕",
+            num: 8,
+        },
+        {
+            text: "하세요",
+            num: 7,
+        },
+    ],
+    pointSentence: [
+        {
+            text:
+                "그래서 노래와 더불어 뮤직비디오 상영과 무대연출까지 기획해야 할 필요성을 느꼈고, 다음연도 회장을 맡아 새롭게 조직을 개편하여 뮤직비디오제작, 무대 기획 인원을 새로 선출해 총 21명의 중규모 동아리로 탈바꿈 하였습니다.",
+            order: 4,
+        },
+        {
+            text:
+                "차 정기공연을 위해서 작곡은 물론, 홍보영상 및 뮤직비디오제작, 무대연출까지 기획하였고, 다른 음악동아리들과의 차별성을 바탕으로 주기적으로 홍보영상을 배포 하였습니다.^0^2016년 학과에서 마음 맞는 9명의 친구들과 함께 창작음악 동아리를 창립하였고, ‘친구가 만든 노래를 친구가 부른다’는 슬로건으로 활동을 시작하였습니다.^1^8개월간 준비한 첫 정기공연에는 약 80명의 관객을 유치하여 괜찮은 성과를 내었습니다.",
+            order: 3,
+        },
+        {
+            text:
+                "차 정기공연을 위해서 작곡은 물론, 홍보영상 및 뮤직비디오제작, 무대연출까지 기획하였고, 다른 음악동아리들과의 차별성을 바탕으로 주기적으로 홍보영상을 배포 하였습니다.^0^2016년 학과에서 마음 맞는 9명의 친구들과 함께 창작음악 동아리를 창립하였고, ‘친구가 만든 노래를 친구가 부른다’는 슬로건으로 활동을 시작하였습니다.^1^8개월간 준비한 첫 정기공연에는 약 80명의 관객을 유치하여 괜찮은 성과를 내었습니다.",
+            order: 5,
+        },
+        {
+            text:
+                "차 정기공연을 위해서 작곡은 물론, 홍보영상 및 뮤직비디오제작, 무대연출까지 기획하였고, 다른 음악동아리들과의 차별성을 바탕으로 주기적으로 홍보영상을 배포 하였습니다.^0^2016년 학과에서 마음 맞는 9명의 친구들과 함께 창작음악 동아리를 창립하였고, ‘친구가 만든 노래를 친구가 부른다’는 슬로건으로 활동을 시작하였습니다.^1^8개월간 준비한 첫 정기공연에는 약 80명의 관객을 유치하여 괜찮은 성과를 내었습니다.",
+            order: 1,
+        },
+        {
+            text:
+                "차 정기공연을 위해서 작곡은 물론, 홍보영상 및 뮤직비디오제작, 무대연출까지 기획하였고, 다른 음악동아리들과의 차별성을 바탕으로 주기적으로 홍보영상을 배포 하였습니다.^0^2016년 학과에서 마음 맞는 9명의 친구들과 함께 창작음악 동아리를 창립하였고, ‘친구가 만든 노래를 친구가 부른다’는 슬로건으로 활동을 시작하였습니다.^1^8개월간 준비한 첫 정기공연에는 약 80명의 관객을 유치하여 괜찮은 성과를 내었습니다.",
+            order: 2,
+        },
+    ],
+    pointKeyword: [
+        { text: "기획 하였고" },
+        { text: "무대 기획" },
+        { text: "음악 동아리" },
+    ],
+};
+
 const tmpAnalData = {
     result: [
         {
@@ -111,7 +172,6 @@ const splitViewClosure = function () {
             }, 30);
 
             status = "split";
-            console.log(status);
         } else {
             resultContainer.parentNode.removeChild(resultContainer);
             status = "none";
@@ -205,20 +265,110 @@ const makeSimillarResult = function (data) {
     container.appendChild(list);
 };
 
-const makeMyDocResult = function (data) {
+const makeMyDocResult = function (json) {
+    const wordFrequency = Array.from(json.wordFrequency);
+    const pointSentence = Array.from(json.pointSentence);
+    const pointKeyword = Array.from(json.pointKeyword);
+
     resultContainer.innerHTML = "";
     resultContainer.innerHTML = `<div class="scrap-partition">
-    <div id="scrap-company-name">기업명 </div>
-    <div id="scrap-task-name">직무 </div>
+    <div id="scrap-company-name">내 자소서 분석 </div>
+    
 </div><div id="simillar-inner-container">
-<div>4</div>
-<div>5</div>
-<div>6</div>
-<div>7</div>
-<div>8</div>
-<div>9</div>
-
+<div id="word-frequency">
+    <h2>단어 빈도수</h2>
+    
+</div>
+<div id="point-sentence">
+    <h2>핵심 문장</h2>
+    
+</div>
+<div id="point-keyword">
+    <h2>핵심 키워드</h2>
+    
+</div>
 </div>`;
+
+    const wordFrequencyContainer = document.querySelector("#word-frequency");
+    const pointSentenceContainer = document.querySelector("#point-sentence");
+    const pointKeywordContainer = document.querySelector("#point-keyword");
+
+    wordFrequencyContainer.innerHTML += `<div class="skills">
+    <ul class="lines">
+      <li class="line l--0">
+        <span class="line__label title">
+          0
+        </span> 
+      </li>
+      <li class="line l--25">
+        <span class="line__label">
+          3
+        </span>
+      </li>
+      <li class="line l--50">
+        <span class="line__label">
+          5
+        </span>
+      </li>
+      <li class="line l--75">
+        <span class="line__label">
+          7
+        </span>
+      </li>
+      <li class="line l--100">
+        <span class="line__label">
+          9
+        </span>
+      </li>
+    </ul>
+    <div class="charts">
+    <div class="chart chart--dev">
+      
+      <ul class="chart--horiz">
+        
+      </ul>
+    </div>
+    </div>`;
+    // wordFrequencyContainer.innerHTML += `<div class="charts">
+    // <div class="chart chart--dev">
+
+    //   <ul class="chart--horiz">
+
+    //   </ul>
+    // </div>`;
+    const skills = document.querySelector(".skills");
+    skills.style.height = `${wordFrequency.length * 50}px`;
+
+    wordFrequency.forEach((v, i) => {
+        const liContainer = document.querySelector(".chart--horiz");
+        const item = document.createElement("li");
+        item.classList.add("chart__bar");
+        item.style.width = `${v.num * 12.2}%`;
+        item.innerHTML = `<span class="chart__label">
+        ${v.text}
+      </span>`;
+        liContainer.appendChild(item);
+        // const item = document.createElement("div");
+        // item.id = "wordFre-item-container";
+        // item.innerHTML = `<span id="word">"${v.text}"</span> : <span id="frequency">${v.num}</span>`;
+        // wordFrequencyContainer.appendChild(item);
+    });
+    const compare = (key) => (a, b) => a[key] - b[key];
+    const sortedPointSentence = pointSentence.sort(compare("order"));
+
+    sortedPointSentence.forEach((v, i) => {
+        const item = document.createElement("div");
+        item.id = "pointSentence-item-container";
+        item.innerHTML = ` <span id="order">${v.order}</span> <span id="sentence">"${v.text}"</span>`;
+        pointSentenceContainer.appendChild(item);
+    });
+
+    pointKeyword.forEach((v, i) => {
+        const item = document.createElement("div");
+        item.id = "pointKeyword-item-container";
+        item.innerHTML = `<span id="keyword">"${v.text}"</span>`;
+        pointKeywordContainer.appendChild(item);
+    });
 };
 
 const branchData = function (json, route) {
@@ -243,48 +393,19 @@ const branchData = function (json, route) {
 
 const analysis = async function (data, route) {
     console.log("분석시작");
-    await fetch(`http://localhost:5000/analysis`, {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        redirect: "follow",
-        referrer: "no-referrer",
-        body: JSON.stringify(data),
-    })
-        .then((res) => {
-            console.log(res.status);
-
-            return res.json();
-        })
-        .then((json) => {
-            branchData(json, route);
-            console.log(json);
-        })
-
-        .catch((error) => {
-            console.log(error);
-        });
-};
-
-const analysisReady = async function (data, route) {
-    console.log(data);
-    console.log("분석 준비중...");
-    console.log(localStorage.getItem("isFirst"));
-    const answerData = { answer: data.answer };
-
-    loader();
-    if (localStorage.getItem("isFirst") === "true") {
-        console.log("첫분석");
-        await fetch(`http://localhost:5000/input_answer`, {
-            method: "GET",
+    // http://52.78.211.1:5000/analysis
+    console.log(route);
+    if (route === "searchSimillarDocument") {
+        await fetch(`http://52.78.211.1:5000/analysis`, {
+            method: "POST",
             mode: "cors",
             cache: "no-cache",
-
+            headers: {
+                "Content-Type": "application/json",
+            },
             redirect: "follow",
             referrer: "no-referrer",
+            body: JSON.stringify(data),
         })
             .then((res) => {
                 console.log(res.status);
@@ -292,20 +413,83 @@ const analysisReady = async function (data, route) {
                 return res.json();
             })
             .then((json) => {
+                branchData(json, route);
                 console.log(json);
-                localStorage.setItem("isFirst", "false");
-                analysis(answerData, route);
             })
 
             .catch((error) => {
                 console.log(error);
             });
-
-        firstAnalysis = false;
     } else {
-        console.log("두번째이후분석");
-        analysis(answerData, route);
+        // 내자소서 분석 서버 url 필요
+        setTimeout(() => {
+            branchData(tmpMyAnalData, route);
+        }, 1000);
+
+        // await fetch(`http://52.78.211.1:5000/analysis`, {
+        //     method: "POST",
+        //     mode: "cors",
+        //     cache: "no-cache",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     redirect: "follow",
+        //     referrer: "no-referrer",
+        //     body: JSON.stringify(data),
+        // })
+        //     .then((res) => {
+        //         console.log(res.status);
+
+        //         return res.json();
+        //     })
+        //     .then((json) => {
+        //         branchData(tmpMyAnalData, route);
+        //         console.log(json);
+        //     })
+
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
     }
+};
+
+const analysisReady = async function (data, route) {
+    console.log("분석 준비중...");
+
+    const answerData = { answer: data.answer };
+
+    loader();
+    analysis(answerData, route);
+    // if (localStorage.getItem("isFirst") === "true") {
+    //     console.log("첫분석");
+    //     await fetch(`http://52.78.211.1:5000/input_answer`, {
+    //         method: "GET",
+    //         mode: "cors",
+    //         cache: "no-cache",
+
+    //         redirect: "follow",
+    //         referrer: "no-referrer",
+    //     })
+    //         .then((res) => {
+    //             console.log(res.status);
+
+    //             return res.json();
+    //         })
+    //         .then((json) => {
+    //             console.log(json);
+    //             localStorage.setItem("isFirst", "false");
+    //             analysis(answerData, route);
+    //         })
+
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+
+    //     firstAnalysis = false;
+    // } else {
+    //     console.log("두번째이후분석");
+    //     analysis(answerData, route);
+    // }
 };
 
 const btnHandler = function (e) {
