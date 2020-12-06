@@ -15,7 +15,7 @@ const unloader = function () {
 };
 
 const loader = function () {
-    loaderContainer.innerHTML = "분석중입니다...";
+    loaderContainer.innerHTML = "loading...";
 
     loaderContainer.style.display = "block";
 };
@@ -329,13 +329,7 @@ const makeMyDocResult = function (json) {
       </ul>
     </div>
     </div>`;
-    // wordFrequencyContainer.innerHTML += `<div class="charts">
-    // <div class="chart chart--dev">
 
-    //   <ul class="chart--horiz">
-
-    //   </ul>
-    // </div>`;
     const skills = document.querySelector(".skills");
     skills.style.height = `${wordFrequency.length * 50}px`;
 
@@ -348,10 +342,6 @@ const makeMyDocResult = function (json) {
         ${v.text}
       </span>`;
         liContainer.appendChild(item);
-        // const item = document.createElement("div");
-        // item.id = "wordFre-item-container";
-        // item.innerHTML = `<span id="word">"${v.text}"</span> : <span id="frequency">${v.num}</span>`;
-        // wordFrequencyContainer.appendChild(item);
     });
     const compare = (key) => (a, b) => a[key] - b[key];
     const sortedPointSentence = pointSentence.sort(compare("order"));
@@ -460,36 +450,6 @@ const analysisReady = async function (data, route) {
 
     loader();
     analysis(answerData, route);
-    // if (localStorage.getItem("isFirst") === "true") {
-    //     console.log("첫분석");
-    //     await fetch(`http://52.78.211.1:5000/input_answer`, {
-    //         method: "GET",
-    //         mode: "cors",
-    //         cache: "no-cache",
-
-    //         redirect: "follow",
-    //         referrer: "no-referrer",
-    //     })
-    //         .then((res) => {
-    //             console.log(res.status);
-
-    //             return res.json();
-    //         })
-    //         .then((json) => {
-    //             console.log(json);
-    //             localStorage.setItem("isFirst", "false");
-    //             analysis(answerData, route);
-    //         })
-
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-
-    //     firstAnalysis = false;
-    // } else {
-    //     console.log("두번째이후분석");
-    //     analysis(answerData, route);
-    // }
 };
 
 const btnHandler = function (e) {
