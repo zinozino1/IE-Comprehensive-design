@@ -412,34 +412,35 @@ const analysis = async function (data, route) {
             });
     } else {
         // 내자소서 분석 서버 url 필요
-        setTimeout(() => {
-            branchData(tmpMyAnalData, route);
-        }, 1000);
 
-        // await fetch(`http://52.78.211.1:5000/analysis`, {
-        //     method: "POST",
-        //     mode: "cors",
-        //     cache: "no-cache",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     redirect: "follow",
-        //     referrer: "no-referrer",
-        //     body: JSON.stringify(data),
-        // })
-        //     .then((res) => {
-        //         console.log(res.status);
+        // setTimeout(() => {
+        //     branchData(tmpMyAnalData, route);
+        // }, 1000);
 
-        //         return res.json();
-        //     })
-        //     .then((json) => {
-        //         branchData(tmpMyAnalData, route);
-        //         console.log(json);
-        //     })
+        await fetch(`http://52.78.211.1:5000/analysis_myanswer`, {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(data),
+        })
+            .then((res) => {
+                console.log(res.status);
 
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
+                return res.json();
+            })
+            .then((json) => {
+                branchData(json, route);
+                console.log(json);
+            })
+
+            .catch((error) => {
+                console.log(error);
+            });
     }
 };
 
