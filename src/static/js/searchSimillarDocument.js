@@ -349,7 +349,9 @@ const makeMyDocResult = function (json) {
     sortedPointSentence.forEach((v, i) => {
         const item = document.createElement("div");
         item.id = "pointSentence-item-container";
-        item.innerHTML = ` <span id="order">${v.order}</span> <span id="sentence">"${v.text}"</span>`;
+        item.innerHTML = ` <span id="order">${
+            i + 1
+        }</span> <span id="sentence">"${v.text}"</span>`;
         pointSentenceContainer.appendChild(item);
     });
 
@@ -381,7 +383,7 @@ const branchData = function (json, route) {
     // showResultDocument(tmpAnalData);
 };
 
-const analysis = async function (data, route) {
+const analysis = async function (data, data2, route) {
     console.log("분석시작");
     // http://52.78.211.1:5000/analysis
     console.log(route);
@@ -416,7 +418,7 @@ const analysis = async function (data, route) {
         // setTimeout(() => {
         //     branchData(tmpMyAnalData, route);
         // }, 1000);
-
+        console.log("asdf");
         await fetch(`http://52.78.211.1:5000/analysis_myanswer`, {
             method: "POST",
             mode: "cors",
@@ -426,7 +428,7 @@ const analysis = async function (data, route) {
             },
             redirect: "follow",
             referrer: "no-referrer",
-            body: JSON.stringify(data),
+            body: JSON.stringify(data2),
         })
             .then((res) => {
                 console.log(res.status);
@@ -448,9 +450,10 @@ const analysisReady = async function (data, route) {
     console.log("분석 준비중...");
 
     const answerData = { answer: data.answer };
+    const answerData2 = { analysis_myanswer: data.answer };
 
     loader();
-    analysis(answerData, route);
+    analysis(answerData, answerData2, route);
 };
 
 const btnHandler = function (e) {

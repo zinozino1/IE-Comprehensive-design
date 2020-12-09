@@ -1359,6 +1359,22 @@ footer {
     opacity: 0;
     animation: 1s anim-lightspeed-in ease forwards;
 }
+
+.chart--dev .chart__bar:nth-of-type(16) {
+    animation-delay: 3.7s;
+}
+.chart--dev .chart__bar:nth-of-type(15) {
+    animation-delay: 3.5s;
+}
+.chart--dev .chart__bar:nth-of-type(14) {
+    animation-delay: 3.3s;
+}
+.chart--dev .chart__bar:nth-of-type(13) {
+    animation-delay: 3.1s;
+}
+.chart--dev .chart__bar:nth-of-type(12) {
+    animation-delay: 2.9s;
+}
 .chart--dev .chart__bar:nth-of-type(11) {
     animation-delay: 2.7s;
 }
