@@ -235,7 +235,6 @@ footer {
 /* login.pug */
 
 .login-container {
-    border: 1px solid blueviolet;
     height: 85vh;
     display: flex;
     flex-direction: column;
@@ -307,7 +306,6 @@ footer {
 /* join.pug */
 
 .join-container {
-    border: 1px solid blueviolet;
     height: 85vh;
     display: flex;
     flex-direction: column;
