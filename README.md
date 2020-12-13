@@ -28,6 +28,10 @@
 
 -   주관적인 자소서 첨삭이나,단순한 단어 자동완성 기능이 아닌 데이터 분석을 통한 객관적인 분석 자료 제공.
 
+## AWS 링크
+
+-   http://52.78.80.31:4000
+
 ## 사용법
 
 1. git clone https://github.com/zinozino1/IE-Comprehensive-design.git
