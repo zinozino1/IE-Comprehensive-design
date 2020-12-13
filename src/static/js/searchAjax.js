@@ -36,7 +36,7 @@ const scrapHandler = async function (e) {
     setTimeout(() => {
         this.style.background = "#fff";
     }, 1000);
-    await fetch("http://localhost:4000/api/scrapDocument", {
+    await fetch("http://52.78.80.31:4000/api/scrapDocument", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -449,7 +449,7 @@ const taskSearchHandler = async function (event) {
     if (searchReq.task === "") {
         noneOfSearch();
     } else {
-        await fetch("http://localhost:4000/document/taskSearch", {
+        await fetch("http://52.78.80.31:4000/document/taskSearch", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
@@ -488,7 +488,7 @@ const questionSearchHandler = async function (event) {
     if (searchReq.question === "") {
         noneOfSearch();
     } else {
-        await fetch("http://localhost:4000/document/questionSearch", {
+        await fetch("http://52.78.80.31:4000/document/questionSearch", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
@@ -530,7 +530,7 @@ const keywordSearchHandler = async function () {
     if (searchReq.keyword === "") {
         noneOfSearch();
     } else {
-        await fetch("http://localhost:4000/document/keywordSearch", {
+        await fetch("http://52.78.80.31:4000/document/keywordSearch", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",

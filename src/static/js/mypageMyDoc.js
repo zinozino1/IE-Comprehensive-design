@@ -135,7 +135,7 @@ const sortingResult = function (result) {
 const getMyDocument = async function () {
     const userId = window.location.href.split("/mypage/")[1];
     console.log(userId);
-    await fetch("http://localhost:4000/api/searchMyDocument", {
+    await fetch("http://52.78.80.31:4000/api/searchMyDocument", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",

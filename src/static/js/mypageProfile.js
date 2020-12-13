@@ -10,7 +10,7 @@ const saveUser = function () {
     const inputNickName = document.querySelector("#user-nickName");
 
     saveBtn.addEventListener("click", async (e) => {
-        await fetch("http://localhost:4000/api/saveUser", {
+        await fetch("http://52.78.80.31:4000/api/saveUser", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
@@ -73,7 +73,7 @@ const paintEditContainer = function (email, nickName) {
 const getCurrentUser = async function () {
     const userId = window.location.href.split("/mypage/")[1];
     console.log(userId);
-    await fetch("http://localhost:4000/api/searchUser", {
+    await fetch("http://52.78.80.31:4000/api/searchUser", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",

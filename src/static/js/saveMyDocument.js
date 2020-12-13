@@ -26,7 +26,7 @@ const saveInDB = async function (data) {
     if (queryString) {
         console.log("쿼리있음"); // url에 쿼리스트링 붙여야함...
         await fetch(
-            `http://localhost:4000/api/getSaveMyDocument?title=${data.title}&question=${data.question}&answer=${data.answer}&id=${id}`,
+            `http://52.78.80.31:4000/api/getSaveMyDocument?title=${data.title}&question=${data.question}&answer=${data.answer}&id=${id}`,
             {
                 method: "GET",
                 mode: "cors",
@@ -49,7 +49,7 @@ const saveInDB = async function (data) {
             });
     } else {
         console.log("쿼리없음");
-        await fetch("http://localhost:4000/api/saveMyDocument", {
+        await fetch("http://52.78.80.31:4000/api/saveMyDocument", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",

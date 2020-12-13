@@ -6,7 +6,7 @@ import "./models/document";
 const PORT = 4000;
 
 const handleListening = () => {
-    console.log(`✅ Listening on : http://localhost:${PORT}`);
+    console.log(`✅ Listening on : http://52.78.80.31:${PORT}`);
 };
 
 app.listen(PORT, handleListening);

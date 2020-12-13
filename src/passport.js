@@ -17,7 +17,7 @@ passport.use(
         {
             clientID: process.env.GOOGlE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CILENT_PW,
-            callbackURL: "http://localhost:4000/auth/google/callback",
+            callbackURL: "http://52.78.80.31/auth/google/callback",
         },
         googleLoginCallBack,
     ),
@@ -27,7 +27,7 @@ passport.use(
     new KakaoStrategy(
         {
             clientID: process.env.KAKAO_CLIENT,
-            callbackURL: "http://localhost:4000/auth/kakao/callback",
+            callbackURL: "http://52.78.80.31/auth/kakao/callback",
         },
         kakaoLoginCallBack,
     ),
