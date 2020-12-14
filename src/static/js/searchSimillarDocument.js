@@ -411,6 +411,8 @@ const analysis = async function (data, data2, route) {
 
             .catch((error) => {
                 console.log(error);
+                unloader();
+                alert("답변을 제대로 입력해주세요!");
             });
     } else {
         // 내자소서 분석 서버 url 필요
@@ -442,6 +444,8 @@ const analysis = async function (data, data2, route) {
 
             .catch((error) => {
                 console.log(error);
+                unloader();
+                alert("답변을 제대로 입력해주세요!");
             });
     }
 };
